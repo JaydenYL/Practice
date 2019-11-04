@@ -1,0 +1,7 @@
+coin | strange copper coin | A grimy copper coin is stuck fast to the ground here. | 2 | Fountain
+rock | blue rock | A weird blue rock minds its own business in the corner, unmoving. | 1 | Fountain
+ribbon | red ribbon | Bright red and striking, a ribbon adds a bit of colour to the ground here. | -2 | Phone Booth
+bucket | bucket of paint | There is a bucket of green paint here. It is dangerously full. | 3 | Painted Fences
+rake | ordinary rake | There is a rake on the ground, dreaming of lakes. | 5 | Garden
+apple | freshly-fallen apple | Red and unblemished, a freshly-fallen apple rests on the ground here. | 1 | Apple Orchard
+knife | rusty old knife | Someone has stabbed a knife into the ground here. It looks rusty. | 5 | Windmill

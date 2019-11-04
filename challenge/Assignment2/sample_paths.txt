@@ -1,0 +1,39 @@
+Fountain > northeast > Dog Park
+Fountain > South > Cobblestone Path
+Fountain > wEST > Apple Orchard
+Fountain > NorthWest > Phone Booth
+
+Dog Park > west > Painted Fences
+Dog Park > NORTH > Sunflowers
+Dog Park > southwest > Fountain
+
+Cobblestone Path > north > Fountain
+Cobblestone Path > northwest > Apple Orchard
+Cobblestone Path > southeast > Lake
+Cobblestone Path > west > Garden
+
+Apple Orchard > east > Fountain
+Apple Orchard > Northeast > Phone Booth
+Apple Orchard > southeast > Cobblestone Path
+Apple Orchard > south > Garden
+
+Phone Booth > Southeast > Fountain
+Phone Booth > northeast > Painted Fences
+Phone Booth > southwest > Apple Orchard
+
+Painted Fences > east > Dog Park
+Painted Fences > southwest > Phone Booth
+Painted Fences > northeast > Sunflowers
+Painted Fences > north > Windmill
+
+Sunflowers > south > Dog Park
+Sunflowers > southwest > Painted Fences
+Sunflowers > west > Windmill
+
+Lake > northwest > Cobblestone Path
+
+Garden > east > Cobblestone Path
+Garden > north > Apple Orchard
+
+Windmill > south > Painted Fences
+Windmill > east > Sunflowers

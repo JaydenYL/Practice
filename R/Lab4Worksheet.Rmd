@@ -1,0 +1,157 @@
+---
+title: "MATH1005 Lab4 Worksheet"
+subtitle: "Numerical Summaries"
+author: "Â© University of Sydney 2019"
+date: 
+output:
+  html_document:
+    fig_caption: yes
+    number_sections: yes
+    self_contained: yes
+    theme: flatly
+    css: 
+      - https://use.fontawesome.com/releases/v5.0.6/css/all.css
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    code_folding: hide
+---
+<style>
+h2 { /* Header 2 */
+    font-size: 22px
+}
+</style>
+
+<style>
+h3 { /* Header 3 */
+    font-size: 18px
+}
+</style>
+
+# <i class="fa fa-crosshairs"></i> Aim of Lab4 {-}
+
+**Learning Outcome**  
+LO3 Produce, interpret and compare graphical and numerical summaries in R.
+
+At the end of this Lab, you should be able to:
+
+- Choose what numerical summaries are appropriate for given variables, and interpret the output.
+- Produce numerical summaries with R (mean, median, SD, IQR).
+- Write a concise and precise executive summary of your findings.
+
+**R commands** 
+`class`, `hist`, `barplot`,`boxplot`
+
+# StatQuiz
+
+# StatBook Question 
+p34 Set A: Q4,5,6; p46 Set E: Q1,2
+
+# <i class="fas fa-home"></i> Sydney Property Market 
+
+The Newtown property prices dataset comes from data scraped by [domain](https://www.domain.com.au/). Who might be interested in this data?
+
+```{r}
+property = read.csv("http://www.maths.usyd.edu.au/u/UG/JM/DATA1001/r/2018S2/data/NewtownJune2017.csv")
+```
+
+## Executive Summary
+
+I discovered ...   [Fill this out at the end of your explorations.]
+
+## Initial Data Analysis (IDA)
+
+- Produce a snapshot of the data. What variables do you think would most affect the sale price of property?
+```{r}
+str(property)
+```
+
+## Research Questions
+
+### What were the cheapest properties? 
+
+- Here we consider **1 quantitative variable**: *price* of the properties.
+
+- First, we could just sort by the sold price.
+
+```{r}
+# Sort all prices
+sold = property$Sold
+sort(sold)
+``` 
+
+- It would nice to list the details about the cheapest properties. Try the following code.
+```{r}
+# Cheapest
+attach(property)   # The database is attached to the R search path, so variables in the database can be accessed by simply giving their names.
+head(property[order(Sold), ][c(1, 6, 7)], 10)
+```  
+
+- Go through this last command carefully, noticing what it does.
+
+- Did you expect these properties to be the cheapest?
+
+- Summarise your findings.
+
+### What were the most expensive properties? 
+
+- Now focus on the most expensive properties.
+
+```{r}
+# Most expensive
+head(property[order(Sold, decreasing =T), ][c(1, 6, 7)], 10)
+```   
+
+- Did you expect these properties to be the most expensive?
+
+- Summarise your findings.
+    
+### What was the average price for a 2 bedroom property? 
+  
+- Here we consider **1 quantitative variable**: *price* of the 2B properties.
+
+- First we need to filter down to just the 2 bedroom properties.
+   
+```{r}
+# Select 2 bedroom properties
+property1 = property$Sold[property$Bedrooms=="2"]
+```
+
+- Now consider the mean and median. Are they different to each other here? Why or why not?
+
+```{r}
+# Find the mean and median
+mean(property1)
+median(property1)
+```  
+    
+- What were the standard deviation (SD) and interquartile range (IQR) for the 2 bedroom properties? What information does this give us?
+
+```{r}
+# Find the SD and IQR
+sd(property1)
+IQR(property1)
+```  
+
+- Summarise your findings.
+
+###  Does the number of carspots seem to affect the price? 
+
+```{r}
+mean(property$Sold[property$Carspots=="0"])
+mean(property$Sold[property$Carspots=="1"])
+mean(property$Sold[property$Carspots=="2"])
+```  
+
+- Postulate reasons for your conclusions.
+
+### Assuming commission fees are around 2%, which agency earnt the most over that period? (Ext)
+
+```{r}
+# Example of extracting Agent sales
+sum(property$Sold[property$Agent=="RayWhite"])*0.02
+```  
+    
+### Explore your own research question    
+    
+    

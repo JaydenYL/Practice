@@ -1,0 +1,160 @@
+---
+title: "MATH1005 Lab8 Worksheet"
+subtitle: "Chance variability (Box Model)"
+author: "Â© University of Sydney 2019"
+date: 
+output:
+  html_document:
+    fig_caption: yes
+    number_sections: yes
+    self_contained: yes
+    theme: flatly
+    css: 
+      - https://use.fontawesome.com/releases/v5.0.6/css/all.css
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    code_folding: hide
+---
+<style>
+h2 { /* Header 2 */
+    font-size: 22px
+}
+</style>
+
+<style>
+h3 { /* Header 3 */
+    font-size: 18px
+}
+</style>
+
+# <i class="fa fa-crosshairs"></i> Aim of Lab8 {-}
+
+**Learning Outcome** 
+LO6 Use the box model to describe chance and chance variability, including sample surveys and the central limit theorem. 
+
+At the end of this Lab, you should be able to:
+
+- Draw a box model to model the **sum** of random draws (sample) from a box (population).
+- Calculate the mean and SD of the box.
+- Calculate the EV and SE of the **sum** of the draws from the box.
+- Calculate Normal probabilities for the **sum** of draws from the box. 
+
+Note: You also need to know how to model the **mean** of draws from the population.
+
+**R commands** 
+`multicon` (package),`mean`, `popsd`
+
+# <i class="fa fa-th-list"></i> Summary {-}
+
+The **box model** models the sum (or mean) of $n$ random draws from a population. The population is the "box", and the collection of draws forms the "sample".
+
+(1) The Box
+
+As the box represents a population, we use `popsd(box)`, where `popsd` requires the `multicon` package.
+
+|Focus|By hand|In R|Symbol (ext)|
+|--------------|-----|--|-------|
+|Mean of the Box|Calculate the the average| `mean(box)`|$\mu$ |
+|SD of the Box|Calculate the population sd|  `popsd(box)`|$\sigma$ |
+
+(2) The Sample
+
+We can focus on either the Sum (or Mean) of the sample.
+
+|Focus|Expected Value (EV)|Standard Error (SE)|
+|----|----|----|
+|Sum of the Sample| $n$ $\times$ Mean of the Box |$\sqrt{n}$ $\times$ SD of the Box |
+|Mean of the Sample| Mean of the Box | SD of the Box / $\sqrt{n}$|
+
+# StatQuiz
+
+# StatBook Question 
+p277 Set A: Q3,5, p280-281 Set B: Q2,6, p284 Set C: Q2,3, p293-4 Set B: Q1,4, p296-7 Set C: Q2,5, p303-4 Set E: Q2,6,9
+
+# Simple Box Model 
+
+This is more a "pen and paper" lab.
+
+For each calculation, work out the answer by hand, and then check your answers in R.
+
+Model the following context: A box contains 1,2,3,4,5 and we draw 25 times with replacement. Focus on the **sum** of the draws.
+
+## Draw the box model.
+
+Note: On the Carslaw computers, the `DiagrammeR` package may not work.
+
+```{r, fig.height=3, eval=F}
+library("DiagrammeR")
+par(mfrow=c(1,4))
+grViz(" 
+  digraph CFA {
+
+  # All
+  node [fontname = Helvetica, fontcolor = White]
+
+    # Box
+    node [shape = box, style=filled, color=SteelBlue4, width=2 label='1 2 3 4 5'][fillcolor = SteelBlue4]
+    a ; 
+
+    # Sample
+    node [shape = circle, style=filled, color=SteelBlue3, width=0.5, label='   '][fillcolor = SteelBlue3]
+    b ; 
+
+    # Draws
+    a -> b [label = '25 draws  ',fontsize=8]
+    b -> a  [color=grey,arrowsize = 0.5]
+  }
+
+")
+detach(package:DiagrammeR)
+```
+
+## Calculate the Mean and SD of the box
+
+```{r, eval=F}
+box=c(1,2,3,4,5)
+mean(box)
+library(multicon)
+popsd(box) 
+```
+
+## Calculate the EV and SE of the sum of draws from the box
+
+```{r, eval=F}
+25* mean(box)
+sqrt(25) * popsd(box)
+```
+
+## Find the chance that the sum of the draws is between  70 and 80 (inclusive). 
+
+- See the picture on p312 (Q1) of your textbook. From looking at the histogram, what would you predict the area to be? 
+    
+- Extension (for the uber coders). Draw a line underneath representing the standard units.
+
+```{r, eval=F}
+ev = 25* mean(box)
+library(multicon)
+se = sqrt(25) * popsd(box)
+f <- function(x) dnorm(x, ev, se)
+plot(f, ev-3*se, ev+3*se)
+axis(1, line=0, at = -3:3, labels = c("-3s", "-2s", "-1s", "mean", "1s", "2s", "3s"))
+
+curve(f, ev-3*se, ev+3*se, lwd=2, axes = FALSE, xlab = "", ylab = "")
+axis(1, line=0, at = c(ev-3*se, ev-2*se, ev-1*se,ev,ev+1*se,ev+2*se,ev+3*se), labels = c(round(ev-3*se,2),round(ev-2*se,2),round(ev-1*se,2),round(ev,2),round(ev+1*se,2),round(ev+2*se,2),round(ev+3*se,2)))
+axis(1, line=2, at = c(ev-3*se, ev-2*se, ev-1*se,ev,ev+1*se,ev+2*se,ev+3*se), labels = c("-3s", "-2s", "-1s", "mean", "1s", "2s", "3s"))
+```
+
+- Estimate the area using a Normal curve.
+
+```{r, eval=F}
+pnorm(80,ev,se)-pnorm(70,ev,se)
+```
+```{r pressure, echo=FALSE}
+plot(pressure)
+
+
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

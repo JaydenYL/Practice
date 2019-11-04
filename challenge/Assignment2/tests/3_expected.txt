@@ -1,0 +1,14 @@
+
+
+    [x]-[C]
+
+
+You are now at: Stairway.
+There is nothing here.
+
+>> You move east, to Goose Heaven.
+
+Dog is trying to catch you!
+Oh no, you've been caught!
+========= GAME OVER =========
+

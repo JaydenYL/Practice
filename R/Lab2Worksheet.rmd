@@ -1,0 +1,142 @@
+---
+title: "MATH1005 Lab2 Worksheet"
+subtitle: "Design of Experiments"
+author: "© University of Sydney 2019"
+date: 
+output:
+  html_document:
+    number_sections: yes
+    self_contained: yes
+    theme: flatly  # Style sheet (eg colour and font)
+    css: 
+      - https://use.fontawesome.com/releases/v5.0.6/css/all.css
+    toc: true  # Table of contents
+    toc_depth: 3
+    toc_float: true
+    code_folding: hide
+---
+<style>
+h2 { /* Header 2 */
+    font-size: 22px
+}
+</style>
+
+<style>
+h3 { /* Header 3 */
+    font-size: 18px
+}
+</style>
+
+# <i class="fa fa-crosshairs"></i> Aim of Lab2 {-}
+
+**Learning Outcome**  
+LO2 Identify the study design behind a dataset and how the study design affects context specific outcomes.
+
+At the end of this Lab, you should be able to:
+
+- Explain Simpson's Paradox, with reference to the UK Smoking data.
+
+**R commands** 
+`read.csv`,`eval=F`, `sum`, `barplot` 
+
+# StatQuiz
+
+# StatBook Question
+
+# Smoking Study (UK)
+Here we examine the Smoking data from Week 1 lectures. For each part, check the code, run the code, and then write your answer.
+
+## Upload the data
+
+Upload the data direct from a Canvas website url. 
+
+```{r}
+smoking = read.csv("http://www.maths.usyd.edu.au/u/UG/JM/DATA1001/r/2018S2/data/simpsonssmoking.csv",header=T)
+```
+
+## Uploading tricks
+Uploading data is tricky at first. See the RGuide 1.8 for different options.
+
+- Note the url above is from the DATA1001 Canvas website. You could also draw it from your MATH1005 site, by clicking on the data file, and copying the appropriate link address. 
+
+```{r}
+#smoking = read.csv("http://www.maths.usyd.edu.au/u/UG/JM/MATH1005/r/current/data/simpsons_smoking.csv",header=T)
+```
+
+- `header=T` or `header=TRUE` means that the columns have headings.
+
+- You could also download the data from Canvas, store it in your `DATA1001files/data` folder, and then upload it from there. 
+
+```{r,eval=F}
+smoking = read.csv("data/simpsons_smoking.csv", header=T)
+```
+
+- Putting `eval=F` in the code blocks means that the code is not run.
+- The type of data (here `.csv`) must match up with the command (`read.csv)`. So if the data has the ending`.xlsx`, we need to load a package and use `read_excel`. 
+
+## Examine the data 
+- What is the size of the data file? What do the rows and columns represent? Is this the full data from the UK study, or a summary?
+
+```{r}
+dim(smoking)
+names(smoking)
+```
+
+- Can you see any patterns?
+
+```{r}
+smoking
+```
+
+## Research Question: Is the mortality rate higher for smokers or non-smokers?
+
+### 1st, consider the overall mortality rates 
+
+- Calculate the mortality rate for smokers.
+
+```{r}
+sum(smoking$SmokersDied)/sum(smoking$SmokersDied+smoking$SmokersSurvived)
+```
+
+- Calculate the mortality rate for non-smokers.
+
+```{r}
+# Put your code here
+```
+
+- Create a barplot of the 2 mortality rates.
+
+```{r}
+barplot(c(23.9,31.4),names.arg=c("Smoker","Non-smoker"),col=c("lightgreen","lightblue"),main="Mortality Rates for Women over 20 years")
+```
+
+- What do these results seem to imply?
+
+### 2nd, examine the mortality rate by age groups 
+- Did more smokers or non-smokers die in the 18-24 age group?
+
+```{r}
+# Consider Smokers 18-24
+sum(smoking$SmokersDied[1])/sum(smoking$SmokersDied[1]+smoking$SmokersSurvived[1])
+```
+
+```{r}
+# Consider Non-Smokers 18-24
+sum(smoking$NonSmokersDied[1])/sum(smoking$NonSmokersDied[1]+smoking$NonSmokersSurvived[1])
+```
+
+Note: `smoking$SmokersDied[1]` selects the 1st entry of smoking$SmokersDied.
+
+- Did more smokers or non-smokers die in the 25-34 age group?
+
+```{r}
+## Put your code here
+```
+
+### Simpson's Paradox
+Explain Simpson's Paradox, with reference to the UK Smoking data.
+
+# Project Time
+
+Decide what group you are going to work with for Project 1. Read over all the instructions carefully. Brainstorm your approach, and then mindmap the tasks ahead, and how you are going to proceed.
+
