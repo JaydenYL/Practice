@@ -4,8 +4,6 @@ class Creature:
         self.terror_rating = int(terror_rating)
         self.item_ls = []
         self.times = 1
-        self.direct = ''
-        self.location = ''
         
 
     def take(self, item):
@@ -34,7 +32,6 @@ class Creature:
 
 
     def change_direc(self):
-        # if 
         direct_ls = ['north', 'northeast', 'east', 'southeast', 'south', 'southwest',\
                 'west', 'northwest']
         i = 0

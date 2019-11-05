@@ -37,7 +37,7 @@ def process_locations(source):
             loc_name_ls.append(loc_B)
             r_ls.append(loc_b)
         i += 1
-
+#change the string into the instance of Location class
     i = 0
     while i < len(r_ls):
         j = 0
@@ -57,7 +57,6 @@ def process_locations(source):
 def process_items(source, locations):
     with open(source, 'r') as f:
         lines = f.readlines()
-#    print(''.join(i for i in lines))
     i = 0
     while i < len(lines):
         descrip = lines[i].strip()
@@ -114,13 +113,13 @@ def process_exits(source, locations):
         
 #--------------------------------in-game functions----------------------------
 
-
+# quit game
 def Terminate():
     print('Game terminated.')
     quit()
 
 
-
+#check the infomation of player
 def Inv(player):
     if player.item_ls:
         print('You, a goose, are carrying the following {}:'.format('item' if\
@@ -134,7 +133,8 @@ def Inv(player):
         print('You are carrying nothing.\n')
 
 
-
+# check whether there is an item in the list.
+# When take or drop an item, the first thing to do is check it...
 def HaveItem(item_name, item_ls):
     i = 0
     while i < len(item_ls):
@@ -144,7 +144,8 @@ def HaveItem(item_name, item_ls):
     return False
 
 
-
+# check whether there is the creature in the list.
+# Same function like HaveItem() 
 def HaveCreature(item_name, item_ls):
     i = 0
     while i < len(item_ls):
@@ -154,21 +155,21 @@ def HaveCreature(item_name, item_ls):
     return False
 
 
-
+# take an item
 def TakeItem(creature, item):
     creature.take(item)
     if creature.name == 'goose':
         print('You pick up the {}.\n'.format(item.name))
 
 
-
+# drop an item
 def DropItem(creature, item):
     creature.drop(item)
     if creature.name == 'goose':
         print('You drop the {}.\n'.format(item.name))
 
 
-
+#try to flee 
 def Flee(cur_loc):
     if cur_loc.exits:
         print('You slip past the dastardly Goosechasers and run off into the \
@@ -235,7 +236,8 @@ QUIT            - Ends the game. No questions asked.\n''')
 
 
 
-def Look(currt_loc):
+def Look(currt_loc): 
+#print the map
     ls = currt_loc.other_loc
     map_ls = [['north', 'northeast', 'east', 'southeast', 'south', 'southwest'\
             , 'west', 'northwest'],
@@ -252,7 +254,7 @@ def Look(currt_loc):
         while j < 8:
             if ls[i][0].lower() == map_ls[0][j]:
                 print_ls[map_ls[1][j][0]][map_ls[1][j][1]] = map_ls[3][j]
-                y, x= map_ls[2][j][0], map_ls[2][j][1]
+                y, x = map_ls[2][j][0], map_ls[2][j][1]
                 print_ls[y][x : x+3] = '[C]' if ls[i][1].crea_ls else '[ ]'
                 break
             j += 1
@@ -266,8 +268,8 @@ def Look(currt_loc):
             s += print_ls[i][j]
             j += 1
         print(s.rstrip())
-        i += 1
-        
+        i += 1  
+#print the item and creatures and the current Location
     print('You are now at: {}.'.format(currt_loc.name))
     if (not currt_loc.item_ls) and (len(currt_loc.crea_ls) == 1):
         print('There is nothing here.')
@@ -291,9 +293,9 @@ def Look(currt_loc):
         print('The path to freedom is clear. You can FLEE this place.\n')
     else:
         print()
-    
 
 
+# check whether the player is nearby the chaser
 def IsNearby(chaser, player):
     i = 0
     while i < len(chaser.location.other_loc):
@@ -303,7 +305,7 @@ def IsNearby(chaser, player):
     return False
 
 
-
+# check whether the cmd is direction
 def IsDirection(cmd):
     drc_ls = [['NORTH', 'NORTHEAST','EAST', 'SOUTHEAST', 'SOUTH', 'SOUTHWEST'\
             ,'WEST','NORTHWEST'],['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']]
