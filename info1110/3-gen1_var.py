@@ -11,5 +11,3 @@ while i < a-1 :
 	print((i%4)+int(i/4),end = ', ')
 	i += 1	
 print((a-1)%4 + int(a/4))
-
-	

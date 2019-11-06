@@ -4,7 +4,7 @@
 import sys
 
 a = int(input('Give me a number: '))
-#a = int(sys.argv[1])
+# a = int(sys.argv[1])
 
 i = 0
 while i < a-1 :
