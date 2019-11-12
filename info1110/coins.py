@@ -1,4 +1,4 @@
-x = int(input('input the amount of money: $ '))
+x = int(input('Enter a dollar amount: $ '))
 money_ls = [100, 50, 20, 10, 5, 2, 1]
 i = 0
 while x != 0:
