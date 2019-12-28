@@ -3,6 +3,8 @@ class Char {
 	{
 		String greet = "hello";
 		System.out.println(greet);
-		System.out.print(greet.equalsIgnoreCase("hellO"));
+		System.out.println(greet.equalsIgnoreCase("hellO"));
+		int x = 'a';
+		System.out.println(x);
 	}
 }
