@@ -10,7 +10,11 @@ class Questions2to6 {
 //		list_3.add("hello, world");
 //		CharacterOccur a = new CharacterOccur();
 //		a.count();
-		Colour.storeColor();
+//		Colour.storeColor();
+		DynamicArray darray = new DynamicArray(16);
+		darray.add(10);
+		darray.add(11);
+		darray.showElement();
 	}
 }
 
@@ -58,7 +62,12 @@ class Colour{
 		System.out.println(clrs);
 	}
 	
-	public static void add(){
-		
+	public static void add(String s1, String s2, String made_s3){
+		int[] arr_1 = clrs.get(s1), arr_2 = clrs.get(s2), arr_3 = new int[3];
+		for(int i = 0; i<3; i++){
+			arr_3[i] = (arr_1[i]+arr_2[i]>255)?255:arr_1[i]+arr_2[i];
+		}
+		clrs.put(made_s3, arr_3);
 	}
 }
+
