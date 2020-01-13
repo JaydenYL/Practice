@@ -20,8 +20,7 @@ class Questions2to6 {
 
 
 
-class Log{
-
+class Logger{
 }
 
 
@@ -70,4 +69,3 @@ class Colour{
 		clrs.put(made_s3, arr_3);
 	}
 }
-

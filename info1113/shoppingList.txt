@@ -1,0 +1,4 @@
+corditioner:1
+Apple:3
+Light bulb:3
+Soda:1

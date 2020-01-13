@@ -2,10 +2,11 @@ import java.util.*;
 
 class Question3to10 {
 	public static void main(String[] args) {
+		System.out.println("Enter (name , time):");
 		Athlete[] athletes = Athlete.Instantiate();
 		System.out.println(athletes.length);
-		Athlete.sort_athlete(athletes);
-		for(int i = 0; i<athletes.length; i++){
+		Athlete.sort_athlete(athletes);  
+		for(int i = 0; i<athletes.length; i++){ 
 			System.out.println(athletes[i].name +": "+athletes[i].time);
 		}
 	}
@@ -16,7 +17,7 @@ class Plant{
 	int moistureLovel;
 	String name;
 	int hight;
-	
+
 	public Plant(boolean isAlive, int moistureLovel, String name, int h){
 		this.isAlive = isAlive;
 		this.moistureLovel = moistureLovel;
@@ -44,7 +45,7 @@ class Plant{
 class Athlete{
 	String name;
 	float time;
-	
+
 	public Athlete(String name, float time){
 		this.name = name;
 		this.time = time;
@@ -54,7 +55,7 @@ class Athlete{
 		Scanner keyb = new Scanner(System.in);
 		String[] temp;
 		String words;
-		Athlete[] atheles = new Athlete[100];
+		Athlete[] atheles = new Athlete[] {};
 		Athlete man;
 		int count = 0;
 		while (true){
@@ -64,19 +65,25 @@ class Athlete{
 			if(temp.length != 2){System.out.println("Invalid format"); continue;}
 			try {
 				man = new Athlete(temp[0], Float.parseFloat(temp[1]));
-				atheles[count++] = man;
+				atheles=add(atheles, man);
 			} catch (Exception e) {
 				System.out.println("Invalid input");
-				continue;
 			}
 		}
-		//resize the array
-		Athlete[] r_array = new Athlete[count];
-		for(int i = 0; i < count; i++){
-			r_array[i] = atheles[i];
-		}
-		return r_array;
+		return atheles;
 	}
+	
+	
+	public static Athlete[] add(Athlete[] ls, Athlete man){
+		Athlete[] new_ls = new Athlete[ls.length+1];
+		for (int i=0;i<=ls.length;i++){
+			new_ls[i] = ((i<ls.length)? ls[i]: man);
+		}
+		return new_ls;
+	}
+	
+	
+	
 	
 	static void sort_athlete(Athlete[] athletes){
 		int j = 0, i = 0, len = athletes.length - 1;
@@ -96,6 +103,12 @@ class Athlete{
 	}
 }
 
+
+class ShoppingList{
+	
+}
+
+
 class Pet{
 	String name, species;
 	String[] nicknames;
@@ -110,10 +123,7 @@ class Pet{
 	}
 	
 	public boolean equals(Pet p){
-		if((this.name == p.name) && (this.age == p.age) && (this.species == p.species)){
-			return true;
-		}
-		return false;
+		return ((this.name == p.name) && (this.age == p.age) && (this.species == p.species));
 	}
 	
 	public void addNickname(String nickname){

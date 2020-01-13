@@ -13,26 +13,17 @@ public class DynamicArray {
 		this.size = 0;
 	}
 
-	/**
-	 * @param index gets the value from a specific index
-	 * @return element stored at index
-	*/
+
 	public int get(int index){
 		return this.array[index];
 	}
 
-	 /**
-	 * Sets an element at a specified index
-	 * @param element to be stored at index
-	 * @param index index which element will be stored
-	 */
+
 	public void set(int element, int index){
 		this.array[index] = element;
 	}
-	 /**
-	 * Adds an element at the end of the list
-	 * @param element to be stored at size
-	*/
+
+
 	public void add(int element){
 		this.array[(int)this.size++] = element;
 		if (this.size == this.capacity){
@@ -44,10 +35,8 @@ public class DynamicArray {
 			this.array = temp;
 		}
 	}
-	/**
-	 * @param index Removes an element from a specific index
-	 * @return element returns the element that has been removed
-	*/
+
+
 	public int remove(int index){
 		int[] temp = new int[(int)this.capacity];
 		int re_int = this.array[index];
@@ -58,6 +47,7 @@ public class DynamicArray {
 		this.size--;
 		return re_int;
 	}
+
 
 	public void showElement(){
 		System.out.print("{ ");

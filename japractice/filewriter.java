@@ -3,7 +3,7 @@ import java.io.*;
 
 class filewriter {
 	public static void main(String[] args) {
-		File f = new File("hello_0.txt");
+		File f = new File("hello_01.txt");
 		if (f.exists()){
 			System.out.print("File already exits");
 			System.exit(0);
