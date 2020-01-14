@@ -8,8 +8,8 @@ class Questions2to6 {
 //		list_2.add("Hello world");
 //		ArrayList list_3 = new ArrayList<String>();
 //		list_3.add("hello, world");
-//		CharacterOccur a = new CharacterOccur();
-//		a.count();
+		CharacterOccur a = new CharacterOccur();
+		a.count();
 //		Colour.storeColor();
 		DynamicArray darray = new DynamicArray(16);
 		darray.add(10);
@@ -26,9 +26,6 @@ class Logger{
 
 
 class CharacterOccur{
-//	public CharacterOccur(){
-//		
-//	}
 	
 	public static void count(){
 		String s;
@@ -37,12 +34,8 @@ class CharacterOccur{
 		s = keyb.next();
 		Map<String,Integer> result = new HashMap<String, Integer>();
 		for(int i = 0, len = s.length(); i < len; i++){
-			try {
-				result.put(s.substring(i, i+1), result.get(s.substring(i, i+1))+1);
-			} catch (Exception e) {
-				result.put(s.substring(i, i+1), 1);
-			}
-			
+			result.putIfAbsent(s.substring(i, i+1), 0);
+			result.put(s.substring(i, i+1), result.get(s.substring(i, i+1))+1);
 		}
 		System.out.println(result);
 	}
