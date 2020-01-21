@@ -9,12 +9,16 @@ class Questions2to6 {
 //		ArrayList list_3 = new ArrayList<String>();
 //		list_3.add("hello, world");
 		CharacterOccur a = new CharacterOccur();
-		a.count();
+		CharacterOccur.count();
+		Integer i = new Integer(2);
+		int j = i.parseInt(String s);
+		j = Integer.parseInt(String s)
 //		Colour.storeColor();
 		DynamicArray darray = new DynamicArray(16);
 		darray.add(10);
 		darray.add(11);
 		darray.showElement();
+		
 	}
 }
 
