@@ -45,7 +45,7 @@ class CharacterOccur{
 	}
 }
 
-class Colour{
+class Colour {
 	static HashMap<String, int[]> clrs = new HashMap<String, int[]>();
 	public static void storeColor(){
 		
