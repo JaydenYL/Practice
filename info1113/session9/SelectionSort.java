@@ -8,9 +8,10 @@ class SelectionSort {
 		ints.add(1);
 		ints.add(3);
 		sort(ints);
-		for (Integer i : ints){
-			System.out.println(i);
-		}
+		ints.forEach(System.out::println);
+//		for (Integer i : ints){
+//			System.out.println(i);
+//		}
 }
 	
 	public static void sort(List<Integer> ls){

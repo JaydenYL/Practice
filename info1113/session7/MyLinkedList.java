@@ -116,6 +116,8 @@ class Node<E>{
 
 }
 
+
+
 class MyIter<T> implements Iterator<T>{
 	private Node<T> cur;
 	

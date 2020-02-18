@@ -1,34 +1,35 @@
-import java.util.HashMap;;
+import java.util.HashMap;
+
+
 
 class Fabonacci {
 	
-	public static HashMap<Integer,Integer> fabnums = new HashMap<Integer,Integer>();{
-		fabnums.putIfAbsent(Integer.valueOf(1), Integer.valueOf(1));
-		fabnums.putIfAbsent(2,1);
-		System.out.println(fabnums);
-	}
+	public static HashMap<Integer,Integer> fabnums = new HashMap<Integer,Integer>();
 	
 	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int n = scan.nextInt(), d = scan.nextInt();
+		int digit = (int)Math.pow(10, d+1);
+		int result = Fab(n, digit);
+		System.out.println(result);
+		System.out.println(getDigit(result, d));
 		System.out.println(fabnums);
-		System.out.println(fabnums.containsKey(Integer.valueOf(2)));
-		int i = 1;
-		while(i<5){
-		System.out.println(Fab(i));
-		i++;
-		}
-		System.out.println(fabnums);
+		System.out.println(getDigit(1234, 2));
+		
 	}
 	
 
-	public static Integer Fab(Integer n){
-
+	public static Integer Fab(Integer n, int digit){
 		if (n == 1 || n== 2) return 1;
 		if (fabnums.containsKey(n)) return fabnums.get(n);
-		else{
-			int fab = Fab(n-1) + Fab(n-2);
-			fabnums.putIfAbsent(n, fab);
-			return fab;
-		}
+		int fab = (Fab((n-1), digit) + Fab((n-2), digit))%digit;
+		fabnums.putIfAbsent(n, fab);
+		return fab;
+		
+	}
+	
+	public static int getDigit(int num, int n){
+		return (n == 1) ? num %10 : getDigit(num/10, n-1);
 	}
 	
 }
