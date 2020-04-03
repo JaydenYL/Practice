@@ -7,7 +7,7 @@ int main(int argc, char *argv[]) {
 	printf("%d, %d\n", x, x);
 	unsigned short int y = 0;
 	printf("y : %lu,  x : %lu\n", sizeof(y), sizeof(x));
-	float z = 0.4;
-	printf("%.0e", z);
+	float z = 40;
+	printf("%.0A", z);
 	return 0;
 }
