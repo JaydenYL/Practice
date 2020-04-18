@@ -1,7 +1,13 @@
 #include <stdio.h>
 
-int main(int argc, char *argv[]) {
+void printCube(double f)
+{
+	printf("%.4f^3 = %.4f", f, f*f*f);
+}
+
+int main(int argc, char *argv[]) 
+{
 	double num;
-	scanf("%f", &num);
-	
+	scanf("%lf\n", &num);
+	printCube(num);
 }
