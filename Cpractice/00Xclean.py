@@ -33,4 +33,4 @@ if remove_ls:
 else:
 	print('\n\033[1;30;47mNo Need to Clean  =) \033[0m  \U0001F607')
 	
-print("\n")
+print("\033[33m{}\033[0m\n".format("_"*40))
