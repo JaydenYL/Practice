@@ -27,10 +27,13 @@ for f in ls:
 		os.remove(f)
 		
 if remove_ls:		
-	print('\n🎉🎉🎉🎉\n😊\033[32mFINISHED'+'-'*16+'\033[0m\n\n\033[4;36mWe have successfully removed these file:\033[0m\n')
+	print('\n🎉🎉🎉🎉\n😊\033[32mFINISHED'+'-'*16+'\033[0m\n\n\033[4;36mWe have successfully removed these documents:\033[0m\n')
 	for i in remove_ls:
 		print(i)
+	print()
+	os.system('cowthink -f bong errr')
 else:
 	print('\n\033[1;30;47mNo Need to Clean  =) \033[0m  \U0001F607')
+	os.system('cowthink -f  three-eyes weird...')
 	
 print("\033[33m{}\033[0m\n".format("_"*40))
