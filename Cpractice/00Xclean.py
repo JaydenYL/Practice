@@ -8,9 +8,9 @@ def isClass(filename):
 
 ls , remove_ls= os.listdir(), []
 
-print("\033[31mSEARCHING\033[0m", end = '', flush= 1)
+print("\033[31mSEARCHING\033[0m", end = '', flush = True)
 for i in range(0, 7):
-	print("\033[31m.\033[0m", end = '', flush= 1)
+	print("\033[31m.\033[0m", end = '', flush = True)
 	time.sleep(0.16)
 print("\033.\033[0m\n")
 
@@ -18,9 +18,9 @@ for f in ls:
 	name = os.path.splitext(f)[0]
 	if (unKnowType(f) and (name+'.cpp' in ls or name+'.c' in ls )) or isClass(f):
 		remove_ls.append(f)
-		print("\033[37;44mREMOVING {:16}\033[0m".format(f), end = '', flush = 1)
+		print("\033[37;44mREMOVING {:16}\033[0m".format(f), end = '', flush = True)
 		for i in range(0, 9):
-			print("\033[37;44m#\033[0m", end = '', flush = 1)
+			print("\033[37;44m#\033[0m", end = '', flush = True)
 			time.sleep(random.uniform(0, 0.1))
 		print( " "+ chr(0x2705))
 		time.sleep(0.25)
