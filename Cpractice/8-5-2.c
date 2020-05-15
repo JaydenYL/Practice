@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-
 void display(char cr, int lines, int width);
 
 int main(int argc, char *argv[]) 
