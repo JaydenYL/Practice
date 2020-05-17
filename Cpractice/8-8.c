@@ -4,6 +4,7 @@
 char getFirst(void);
 char getChoice(void);
 void count(void);
+int getInt(void);
 
 
 int main(int argc, char *argv[]) 
@@ -53,7 +54,8 @@ char getChoice()
 char getFirst()
 {
 	char ch = getchar();
-	while ((getchar()) != '\n') continue;
+	while ((getchar()) != '\n') 
+		continue;
 	return ch;
 }
 
@@ -62,10 +64,21 @@ void count()
 {
 	int n;
 	printf("Count how far? Enter the integer: \n");
-	scanf("%d", &n);
+	n = getInt();
 	for ( int i = 0; i < n; i++) 
 	{
 		printf("%d", i);
 	}
+	while (getchar() != '\n') continue;
 	printf("\n");
+}
+
+int getInt()
+{
+	int n;
+	while (scanf("%d", &n) != 1)
+	{
+		printf("Invalid input. Please enter an integer:");
+	}
+	return n;
 }
