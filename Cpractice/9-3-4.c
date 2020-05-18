@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h> 
 
+
 void binary(int n);
 int scan(void);
+
 
 int main(int argc, char *argv[]) 
 {
@@ -21,13 +23,12 @@ void binary(int n)
 }
 
 
-
 int scan()
 {
 	int num;
 	while (scanf("%d", &num) != 1)
 	{
-		printf("invalid input, please enter an natural number or 'q' to quit: \n");
+		printf("invalid input, please enter an integer: \n");
 	}
 	return num;
 }
