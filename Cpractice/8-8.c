@@ -19,6 +19,7 @@ int main(int argc, char *argv[])
 				break;
 			case 'b' :
 				putchar(choice);
+				putchar('\n');
 				break;
 			case 'c' :
 				count();

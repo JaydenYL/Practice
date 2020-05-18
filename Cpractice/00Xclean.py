@@ -31,9 +31,9 @@ if remove_ls:
 	for i in remove_ls:
 		print(i)
 	print()
-	os.system('cowthink -f bong errr')
+	os.system('cowthink -f hellokitty meow')
 else:
 	print('\n\033[1;30;47mNo Need to Clean  =) \033[0m  \U0001F607')
-	os.system('cowthink -f  three-eyes weird...')
+	os.system('cowthink -f sodomized Awww man !')
 	
 print("\033[33m{}\033[0m\n".format("_"*40))
