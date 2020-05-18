@@ -3,7 +3,7 @@
 
 int main(int argc, char *argv[]) 
 {
-	int no_data[SIZE] = {[2] = 10, 5};
+	int no_data[SIZE] = {[2] = 10, 5};  // C99 
 	printf("%2s%14s\n", "i", "no_data[i]");
 	for (int i = 0; i < SIZE; i++)
 	{
