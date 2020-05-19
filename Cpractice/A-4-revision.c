@@ -12,3 +12,6 @@ int main(int argc, char *argv[]) {
 // int sum(int [], int );
 
 
+//can not do:
+// int * pt;
+// *pd = 5;
