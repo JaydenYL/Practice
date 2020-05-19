@@ -5,7 +5,7 @@ void mikado(int);
 int main(int argc, char *argv[]) 
 {
 	int pooh = 2, bah = 5;
-	printf("In main() , pooh = %d, &pooh = %p\n", pooh, &pooh );
+	printf("In main() , pooh = %d, &pooh = %18p\n", pooh, &pooh );
 	printf("In main() , bah = %d, &bah = %p\n", bah, &bah );
 	mikado(pooh);
 }
