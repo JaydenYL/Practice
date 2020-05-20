@@ -1,6 +1,7 @@
 #include <stdio.h>
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) 
+{
 	
 	int * p1;
 	int array[2] = {100 ,200};

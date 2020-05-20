@@ -1,7 +1,8 @@
 #include <stdio.h>
 
-int main(int argc, char *argv[]) {
-	
+int main(int argc, char *argv[]) 
+{
+	return 0;
 }
 
 // declaration of a function, follow are same
@@ -12,6 +13,6 @@ int main(int argc, char *argv[]) {
 // int sum(int [], int );
 
 
-//can not do:
+// can not assess without initialization:
 // int * pt;
-// *pd = 5;
+// *pd = 5;  
