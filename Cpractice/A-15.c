@@ -8,9 +8,8 @@ int main(void)
 //	zippo[0][0] = 4;
 	printf("zippo = %p,  zippo + 1 = %p, zippo[0] = %p\n", zippo, zippo + 1, zippo[0]);
 	printf("%d\n", zippo == zippo[0]);
-	printf("%d\n", zippo == *zippo);
+	printf("%d\n", zippo + 2 == zippo[2]);
 	printf("%d\n", *(zippo[0]));
-	printf("%p\n",  *(int*)zippo) ;
 	return 0;
 
 
