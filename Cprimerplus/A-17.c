@@ -8,6 +8,7 @@ void sum_cols(int [][COLS], int );
 int sum2d(int (*ar)[COLS], int rows);
 
 
+
 int main(int argc, char *argv[]) 
 {
 	int array[ROWS][COLS] = {
@@ -24,6 +25,7 @@ int main(int argc, char *argv[])
 }
 
 
+
 void sum_cols(int ar[][COLS], int rows)
 {
 	int r, c, total = 0;
@@ -34,6 +36,7 @@ void sum_cols(int ar[][COLS], int rows)
 	}
 	printf("col %d sum : %d\n", c, total);
 }
+
 
 
 void sum_cols(int ar[][COLS], int rows)
