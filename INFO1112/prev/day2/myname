@@ -1,0 +1,2 @@
+echo $1 is your name
+echo $0 is the filename
