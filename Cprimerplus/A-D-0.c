@@ -17,7 +17,6 @@ int main(int argc, char *argv[])
 }
 
 
-
 void process(int *array[2])
 {
 	int (* pz)[2] = array[1];
