@@ -17,7 +17,8 @@ int sum(int * start, int * end)
 	while (start < end)
 	{
 		total += *start;
-		printf("%ld , ", *start++);
+		printf("%d , ", *start++);
+//		start++;
 	}
 	return total;
 }
