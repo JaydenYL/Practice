@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 
-void process(int *array[2]);
+void process(int (*array)[2]);
 
 int main(int argc, char *argv[]) 
 {
@@ -13,13 +13,14 @@ int main(int argc, char *argv[])
 	ptr1 = array;
 	ptr2 = &array[2];
 	process(ls);
+	
 	return 0;
 }
 
 
-void process(int *array[2])
+void process(int (*array)[2])
 {
-	int (* pz)[2] = array[1];
-	printf("%d %d %d", *pz, pz[1], *(pz+2));
+	int (* pz)[2] = array[0];
+	printf("%d %d %d", **pz, *pz[1], **(pz+2));
 	
 }
