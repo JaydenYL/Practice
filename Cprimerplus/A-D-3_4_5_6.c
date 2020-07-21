@@ -42,6 +42,7 @@ int max_double_index(double * pt, int length)
 	return idx;
 }
 
+
 double max_difference(double * pt, int length)
 {
 	double min = DBL_MAX, max = DBL_MIN;
