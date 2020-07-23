@@ -2,8 +2,8 @@
 
 int main(int argc, char *argv[]) 
 {
-	
-	char * name ;
-	scanf("%s", name);
+	char line[81];
+	while(fgets(line, 81, stdin) != EOF)
+		puts(line);
 	return 0;
 }
