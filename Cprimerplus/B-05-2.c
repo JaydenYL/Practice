@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 	
 	while(strcmp(gets(try), answer) ) 
 		printf("Not currect: ");
-		
+	
 	puts("correct !");
 	
 	return 0;
