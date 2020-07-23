@@ -11,6 +11,7 @@ int main(int argc, char *argv[])
 	return 0;
 }
 
+
 void put1(const char * string)
 {
 	int i = 0;
@@ -18,6 +19,7 @@ void put1(const char * string)
 		putchar(string[i++]);
 	putchar('\n');
 }
+
 
 int put2(const char * string)
 {
