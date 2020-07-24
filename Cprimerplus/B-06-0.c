@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 	sort_string(ptstr, n);
 	for ( int i = 0; i < n; i++)
 	{
-		puts(ptstr);
+		puts(ptstr[i]);
 	}
 	
 	return 0;
