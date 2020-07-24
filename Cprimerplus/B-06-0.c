@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 	char * ptstr[LINE];
 	int n = 0;
 	printf("Input up to %d lines. (Terminator : \"\")\n", LINE); 
-	while (n < LEN && gets(input[n]) != NULL && input[n][0])
+	while ( n < LEN  &&  gets(input[n])  &&  input[n][0] )
 	{
 		ptstr[n] = input[n];
 		n ++;
