@@ -11,10 +11,10 @@ void sort_string(char * string[], int num);
 int main(int argc, char *argv[]) 
 {
 	char input[LINE][LEN];
-	char * ptstr;
+	char * ptstr[LINE];
 	int n = 0;
-	printf("Input up to %d lines. (Terminator : \"\")\n"); 
-	while (n < LEN && gets(input[n]) != NULL && !inputs[n][0] )
+	printf("Input up to %d lines. (Terminator : \"\")\n", LINE); 
+	while (n < LEN && gets(input[n]) != NULL && input[n][0])
 	{
 		ptstr[n] = input[n];
 		n ++;
@@ -32,12 +32,17 @@ int main(int argc, char *argv[])
 void sort_string(char * string[], int num)
 {
 	if (!num || num == 1) return ;
-	char * pt = * string;
+	char * tmp ;
 	for ( int i = 0; i < num ; i++)
 	{
-		for (int j = i; j < num - 1; j++)
+		for (int j = i, up = num-i-1; j < up; j++)
 		{
-			if (strcmp(, )
+			if (strcmp(string[j], string[j+1]) > 0)
+			{
+				tmp = string[j];
+				string[j] = string[j+1];
+				string[j+1] = tmp;
+			}
 		}
 	}
 }
