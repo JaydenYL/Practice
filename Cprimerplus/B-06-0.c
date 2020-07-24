@@ -31,9 +31,13 @@ int main(int argc, char *argv[])
 
 void sort_string(char * string[], int num)
 {
-	char * pt;
+	if (!num || num == 1) return ;
+	char * pt = * string;
 	for ( int i = 0; i < num ; i++)
 	{
-		
+		for (int j = i; j < num - 1; j++)
+		{
+			if (strcmp(, )
+		}
 	}
 }
