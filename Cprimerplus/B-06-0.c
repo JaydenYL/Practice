@@ -29,6 +29,8 @@ int main(int argc, char *argv[])
 	
 }
 
+
+
 void sort_string(char * string[], int num)
 {
 	if (!num || num == 1) return ;
