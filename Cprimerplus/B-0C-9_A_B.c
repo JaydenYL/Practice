@@ -8,7 +8,8 @@ int main(int argc, char *argv[])
 {
 	char str[] = " h ello world";
 	printf("%zu\n", strlength(str));
-	printf("address of str:       %p \nanswer of question A: %p", str, question_A(str));
+	printf("address of str:       %p \n\
+answer of question A: %p", str, question_A(str));
 	return 0;
 }
 
