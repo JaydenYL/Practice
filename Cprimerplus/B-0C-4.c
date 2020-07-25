@@ -5,11 +5,10 @@ char * pt(char *);
 int main(int argc, char *argv[]) 
 {
 	char * x = pt("hello world\n");
-//	puts(x);
 	return 0;
 }
 
-char *pt(char * str)
+char * pt(char * str)
 {
 	char * pc = str;
 	while (*pc) putchar(*pc++);
@@ -17,5 +16,6 @@ char *pt(char * str)
 	do {
 		putchar(*--pc);
 	} while (pc - str);
+	
 	return pc;
 }
