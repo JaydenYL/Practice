@@ -2,6 +2,7 @@
 
 size_t strlength(char *);
 char * question_A(char * );
+void * question_B(char *);
 
 
 int main(int argc, char *argv[]) 
@@ -30,4 +31,10 @@ char * question_A(char * str)
 		str++;
 	}
 	return NULL;
+}
+
+
+void question_B(char * answer)
+{
+	
 }
