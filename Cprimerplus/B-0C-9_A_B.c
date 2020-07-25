@@ -1,8 +1,9 @@
 #include <stdio.h>
 
-size_t strlength(char *);
-char * question_A(char * );
+size_t  strlength(char *);
+char * question_A(char *);
 void * question_B(char *);
+int * str_compare(char * , char *);
 
 
 int main(int argc, char *argv[]) 
@@ -36,5 +37,24 @@ char * question_A(char * str)
 
 void question_B(char * answer)
 {
-	
+	puts("guess the answer : ");
+	char input[100];
+	while (!str_compare(answer, gets(input)))
+	{
+		puts("not correct, enter the answer again: ");
+	}
+	printf("congratualtions\n");
+}
+
+
+int str_compare(char * str1, char * str2)
+{
+	for ( ; *str1 && *str2 ; str++, str++)
+	{
+		if ( *str != *str2) return 0;
+		else if ( *str1 == *str2 && *str1 == '\0' ) return 1;
+		
+		
+	}
+	return 0;
 }
