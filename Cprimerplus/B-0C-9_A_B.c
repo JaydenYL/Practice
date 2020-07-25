@@ -3,6 +3,7 @@
 size_t strlength(char *);
 char * question_A(char * );
 
+
 int main(int argc, char *argv[]) 
 {
 	char str[] = " h ello world";
@@ -11,12 +12,14 @@ int main(int argc, char *argv[])
 	return 0;
 }
 
+
 size_t strlength(char * str)
 {
 	size_t count = 0;
 	for ( ; str[count]; count ++);
 	return count ; 
 }
+
 
 char * question_A(char * str)
 {
