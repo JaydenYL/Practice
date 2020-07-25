@@ -5,9 +5,9 @@ char * question_A(char * );
 
 int main(int argc, char *argv[]) 
 {
-	char str[] = "h ello world";
+	char str[] = " h ello world";
 	printf("%zu\n", strlength(str));
-	printf("%p answer of question A: %p", str, question_A(str));
+	printf("address of str:       %p \nanswer of question A: %p", str, question_A(str));
 	return 0;
 }
 
@@ -20,6 +20,10 @@ size_t strlength(char * str)
 
 char * question_A(char * str)
 {
-	while (str) if (*str++ == ' ') return str ;
+	while (str) 
+	{
+		if (*str == ' ') return str ;
+		str++;
+	}
 	return NULL;
 }
