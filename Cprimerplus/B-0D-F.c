@@ -19,9 +19,9 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 	int (* fun)(int);
-	if (strcmp(option, "-p")) fun =  notChange;
-	else if (strcmp(option, "-u")) fun = toupper;
-	else if (strcmp(option, "-l")) fun = tolower;
+	if (strcmp(argv[2], "-p")) fun =  notChange;
+	else if (strcmp(argv[2], "-u")) fun = toupper;
+	else if (strcmp(argv[2], "-l")) fun = tolower;
 	else 
 	{
 		puts("Invalid choice");
