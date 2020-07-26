@@ -1,5 +1,8 @@
 #include <stdio.h>
+#include <string.h>
 #include <ctype.h>
+
+int notChange(int);
 
 int main(int argc, char *argv[]) 
 {
@@ -8,19 +11,31 @@ int main(int argc, char *argv[])
 		puts("insufficient argument");
 		return -1;
 	}
-	FILE * fp = fopen("textinput.txt", "r");
-	char str[100];
+	FILE * fp = fopen(argv[1], "r");
+	char str[100], *option = argv[2];
 	if(! fp)
 	{
 		puts("Error opening file");
 		return 1;
 	}
-	while (fgets(str, 100, fp))
+	int (* fun)(int);
+	if (strcmp(option, "-p")) fun =  notChange;
+	else if (strcmp(option, "-u")) fun = toupper;
+	else if (strcmp(option, "-l")) fun = tolower;
+	else 
 	{
-		for (int i = 0; str[i];i++){
-			putchar(toupper(str[i]));
-		}
+		puts("Invalid choice");
+		puts(option);
+		return 2;
 	}
+	
+	while (fgets(str, 100, fp))
+		for (int i = 0; str[i];i++) 
+			putchar(fun(str[i]));
+	puts("");
 	fclose(fp);
+	
 	return 0;
 }
+
+int notChange(int i){ return i;}
