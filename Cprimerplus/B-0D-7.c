@@ -5,7 +5,7 @@ char * string_in(char * , char *);
 
 int main(int argc, char *argv[]) 
 {
-	char str1[] = "hello world", str2[] = "hel";
+	char str1[] = "hello world", str2[] = "orr";
 	char * pt = string_in(str1, str2);
 	printf("%p : %s\n", pt, pt);
 	return 0;
