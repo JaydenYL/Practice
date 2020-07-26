@@ -24,9 +24,12 @@ void delete_blank(char * str)
 	{
 		check_list[i] = (isblank(str[i])) ? 0 : 1;
 	}
-	int i = 0, cursor = 0;
-	while (cursor < len)
-		if (check_list[cursor]) str[i++] = str[cursor++];
+	int i = 0, cursor = -1;
+	while (++cursor < len)
+	{
+		if (check_list[cursor]) str[i++] = str[cursor];
+//		cursor ++;
+	}
 	while (i < len) 
 		str[i++] = '\0';
 }
