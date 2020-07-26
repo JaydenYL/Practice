@@ -10,8 +10,10 @@ int main(int argc, char *argv[])
 	char str[100];
 	while (gets(str))
 	{
-		
+		delete_blank(str);
+		puts(str);
 	}
+	return 0;
 }
 
 void delete_blank(char * str)
@@ -26,6 +28,7 @@ void delete_blank(char * str)
 	for (int cursor = 0, i = 0; cursor < len; cursor ++ )
 	{
 		if (check_list[cursor]) str[i++] = str[cursor];
+		else cursor ++;
 	}
 	
 }
