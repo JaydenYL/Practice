@@ -12,26 +12,30 @@ int main(int argc, char *argv[])
 		return -1;
 	}
 	FILE * fp = fopen(argv[1], "r");
-	char str[100], *option = argv[2];
+	char str[100] ;
 	if(! fp)
 	{
 		puts("Error opening file");
 		return 1;
 	}
+	
+	puts(argv[2]);
+	
 	int (* fun)(int);
-	if (strcmp(argv[2], "-p")) fun =  notChange;
-	else if (strcmp(argv[2], "-u")) fun = toupper;
-	else if (strcmp(argv[2], "-l")) fun = tolower;
-	else 
-	{
+	if (!strcmp(argv[2], "-p")) fun =  notChange;
+	else if (!strcmp(argv[2], "-u")) fun = toupper;
+	else if (!strcmp(argv[2], "-l")) fun = tolower;
+	else {
 		puts("Invalid choice");
-		puts(option);
+		puts(argv[2]);
 		return 2;
 	}
 	
 	while (fgets(str, 100, fp))
+	{
 		for (int i = 0; str[i];i++) 
 			putchar(fun(str[i]));
+	}
 	puts("");
 	fclose(fp);
 	
