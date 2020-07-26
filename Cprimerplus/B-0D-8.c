@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 void str_reverse(char *);
 
@@ -14,7 +15,7 @@ int main(int argc, char *argv[])
 void str_reverse(char * str)
 {
 	size_t length = strlen(str);
-	for (int i = 0, tmp; i < str/2; i++)
+	for (int i = 0, tmp; i < length/2; i++)
 	{
 		tmp = str[i];
 		str[i] = str[length-i-1];
