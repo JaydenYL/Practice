@@ -8,7 +8,7 @@ void delete_blank(char *);
 int main(int argc, char *argv[]) 
 {
 	char str[100];
-	while (gets(str))
+	while (gets(str) && str[0])
 	{
 		delete_blank(str);
 		puts(str);
@@ -24,11 +24,9 @@ void delete_blank(char * str)
 	{
 		check_list[i] = (isblank(str[i])) ? 0 : 1;
 	}
-	
-	for (int cursor = 0, i = 0; cursor < len; cursor ++ )
-	{
-		if (check_list[cursor]) str[i++] = str[cursor];
-		else cursor ++;
-	}
-	
+	int i = 0, cursor = 0;
+	while (cursor < len)
+		if (check_list[cursor]) str[i++] = str[cursor++];
+	while (i < len) 
+		str[i++] = '\0';
 }
