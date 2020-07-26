@@ -19,15 +19,13 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 	
-	puts(argv[2]);
 	
 	int (* fun)(int);
 	if (!strcmp(argv[2], "-p")) fun =  notChange;
 	else if (!strcmp(argv[2], "-u")) fun = toupper;
 	else if (!strcmp(argv[2], "-l")) fun = tolower;
 	else {
-		puts("Invalid choice");
-		puts(argv[2]);
+		printf("Invalid choice: %s", argv[2]);
 		return 2;
 	}
 	
