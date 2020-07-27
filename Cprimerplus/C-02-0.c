@@ -9,7 +9,9 @@ int main(int argc, char *argv[])
 {
 	int value;
 	int i;
+	
 	puts("Enter a positive integer (0 to quit): ");
+	
 	while (scanf("%d", &value) && value > 0)
 	{
 		count ++ ;
@@ -21,6 +23,7 @@ int main(int argc, char *argv[])
 	}
 	
 	report_count();
+	
 	return 0;
 }
 
