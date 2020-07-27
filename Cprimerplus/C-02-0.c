@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 void report_count();
-void accumulate();
+void accumulate(int);
 
 int count = 0;
 
@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 	return 0;
 }
 
-void accumulate()
+void report_count()
 {
 	printf("Loop executed %d times", count);
 }
