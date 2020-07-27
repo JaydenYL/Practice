@@ -8,7 +8,8 @@ int count = 0;
 int main(int argc, char *argv[]) 
 {
 	int value;
-	int i;
+	register_t  i;
+	
 	
 	puts("Enter a positive integer (0 to quit): ");
 	
