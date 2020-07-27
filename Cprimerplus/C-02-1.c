@@ -1,9 +1,9 @@
 #include <stdio.h>
 
 extern int count;
-static int total = 0
+static int total = 0;
 
-void accumulate(int);
+void accumulate(int k);
 
 void accumulate(int k);
 {

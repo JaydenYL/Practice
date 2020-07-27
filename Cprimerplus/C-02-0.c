@@ -1,21 +1,21 @@
 #include <stdio.h>
 
 void report_count();
-void accumulate(int);
+void accumulate(int k);
 
 int count = 0;
 
 int main(int argc, char *argv[]) 
 {
 	int value;
-	register_t int i;
+	int i;
 	puts("Enter a positive integer (0 to quit): ");
 	while (scanf("%d", &value) && value > 0)
 	{
 		count ++ ;
 		for (i = value; i >= 0; i--)
 		{
-			accumulate();
+			accumulate(i);
 		}
 		puts("Enter a positive integer (0 to quit): ");
 	}
