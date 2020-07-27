@@ -9,6 +9,8 @@ int main(int argc, char *argv[])
 		printf("x in inner block: %d\n", x);
 		x ++;
 	}
+	
 	printf("%d", x);
+	
 	return 0;
 }
