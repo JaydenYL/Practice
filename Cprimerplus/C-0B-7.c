@@ -2,34 +2,39 @@
 #include <stdlib.h>
 #include <time.h>
 
+#define answer_for_sets "Enter the number of sets (q to quit): "
+
 int rollem(int);
 
 int main(int argc, char *argv[]) 
 {
 	srand((unsigned int) time(0));
-	printf("Enter the number of sides: ");
-	int sides, dice, times, roll_count;
-	scanf("%d", &sides);
-	if (sides < 2)
-	{
-		printf("At least 2 sides.\n");
-		exit(EXIT_FAILURE);
-	}
-	printf("How many dice and how many times?\n");
-	scanf("%d %d", &dice, &times);
+	int sides, dice, sets;
 	
-	if (dice < 1 || times < 1) {
-		printf("Invalid dice or times");
-		exit(EXIT_FAILURE);
-	}
-	roll_count = dice * times;
-	printf("There are %d sets of %d %d-sided die throws:\n", roll_count, dice, times);
-	int i = 0;
-	while (i++ < roll_count) 
+	printf(answer_for_sets);
+	while(scanf("%d", &sets) ==1)
 	{
-		printf("%-3d%c", rollem(sides), (i%8)?' ':'\n');
+		if (sets < 1)
+		{
+			printf("At least 1 sets.\n%s", answer_for_sets);
+			continue;
+		}
+		
+		printf("How many sides and how many dice?\n");
+		scanf("%d %d", &sides, &dice);
+		if (dice < 1 || sides < 2) {
+			printf("Invalid dice or times");
+			exit(EXIT_FAILURE);
+		}
+		
+		printf("There are %d sets of %d %d-sided die throws:\n", sets, dice, sides);
+		int i = 0;
+		while (i++ < sets) 
+		{
+			printf("%-3d%c", rollem(sides), (i%8)?' ':'\n');
+		}
+		printf("\n%s", answer_for_sets);
 	}
-	putchar('\n');
 	
 	return 0;
 	
