@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 extern int rand1();
-extern void xrand1(unsigned int );
+extern void srand1(unsigned int );
 
 int main(int argc, char * argv[])
 {
