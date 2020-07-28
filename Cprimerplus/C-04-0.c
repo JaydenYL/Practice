@@ -8,7 +8,7 @@ int main(int argc, char * argv[])
 	int count;
 	unsigned int seed;
 	puts("Please enter your choice for seed.\n");
-	while (scanf("%u", &seed))
+	while (scanf("%u", &seed) == 1)
 	{
 		srand1(seed);
 		for (count = 0; count < 5; count ++)
