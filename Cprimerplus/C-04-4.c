@@ -21,5 +21,5 @@ int main(int argc, char *argv[])
 	printf("The rollem funciton has been called %d times.\n", roll_count);
 	printf("GOOD FORTUNE TO YOU.\n");
 	
-	reutrn 0;
+	return 0;
 }
