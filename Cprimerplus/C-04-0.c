@@ -12,7 +12,7 @@ int main(int argc, char * argv[])
 	{
 		srand1(seed);
 		for (count = 0; count < 5; count ++)
-			printf("%hd\n", rand1());
+			printf("%d\n", rand1());
 		printf("Please enter your next choice: ");
 	}
 	

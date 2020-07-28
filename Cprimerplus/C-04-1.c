@@ -1,6 +1,6 @@
 // rand1() , srand1()
 
-extern static long int next = 1; 
+static unsigned long int next = 1; 
 
 int rand1(void)
 {
@@ -8,7 +8,7 @@ int rand1(void)
 	return (unsigned int ) (next/65536) % 32768;
 }
 
-void srand(unsigned int seed)
+void srand1(unsigned int seed)
 {
 	next = seed;
 }
