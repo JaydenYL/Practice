@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 	int nums[100];
 	srand((unsigned int) time(0));
 	for (int i = 0; i < 100; i++)
-		nums[i] = rand()%11;
+		nums[i] = rand()%10;
 	sort(100, nums);
 	for (int i = 0; i < 100; i++)
 		printf("%d%c", nums[i], ((i+1) % 10) ?' ':'\n');
