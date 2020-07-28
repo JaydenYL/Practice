@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 
 void first(void)
 {
-	char color ;
+//	char color ;
 	color = 'R';
 	printf("the color in first() is %c.\n", color);
 	
@@ -28,7 +28,7 @@ void first(void)
 
 void second(void)
 {
-	char color;
+//	char color;
 	color = 'G';
 	printf("the color in second() is %c.\n", color);
 }
