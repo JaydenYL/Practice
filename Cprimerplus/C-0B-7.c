@@ -29,6 +29,7 @@ int main(int argc, char *argv[])
 	{
 		printf("%-3d%c", rollem(sides), (i%8)?' ':'\n');
 	}
+	putchar('\n');
 	
 	return 0;
 	
