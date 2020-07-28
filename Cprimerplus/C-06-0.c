@@ -4,7 +4,7 @@
 int main(int argc, char *argv[]) 
 {
 	double * db;
-	int max ;
+	int number , max ;
 	printf("Enter the maximum length of double array: ");
 	scanf("%f", &max);
 	pd = (double *)malloc(sizeof(double) * max);
@@ -15,5 +15,14 @@ int main(int argc, char *argv[])
 	}
 	puts("Enter the values (q to quit):");
 	int i = 0;
-	while (scanf("%d", ))
+	while ( i < max && scanf("%d", &db[i]) == 1)
+	{
+		++i;
+	}
+	printf("You have entered %d number.\n", number = i);
+	
+	for (i = 0; i< number ; i++)
+		printf("%f ", db[i]);
+		
+	return 0;
 }
