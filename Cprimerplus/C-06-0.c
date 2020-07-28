@@ -13,4 +13,7 @@ int main(int argc, char *argv[])
 		puts("Fail in allocating memory");
 		exit(EXIT_FAILURE);
 	}
+	puts("Enter the values (q to quit):");
+	int i = 0;
+	while (scanf("%d", ))
 }
