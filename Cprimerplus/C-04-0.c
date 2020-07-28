@@ -7,7 +7,7 @@ int main(int argc, char * argv[])
 {
 	int count;
 	unsigned int seed;
-	puts("Please enter your choice for seed.\n");
+	puts("Please enter your choice for seed: ");
 	while (scanf("%u", &seed) == 1)
 	{
 		srand1(seed);
