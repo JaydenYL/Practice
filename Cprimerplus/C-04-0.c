@@ -5,6 +5,7 @@ extern void srand1(unsigned int );
 
 int main(int argc, char * argv[])
 {
+	
 	int count;
 	unsigned int seed;
 	printf("Please enter your choice for seed: ");
@@ -15,6 +16,7 @@ int main(int argc, char * argv[])
 			printf("%d\n", rand1());
 		printf("Please enter your next choice: ");
 	}
-	
+
 	return 0;
+
 }
