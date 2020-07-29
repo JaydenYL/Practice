@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 		int i = 0;
 		while (i++ < sets) 
 		{
-			printf("%-3d%c", roll_n_dice(dice, sides), (i%8)?' ':'\n');
+			printf("%3d%c", roll_n_dice(dice, sides), (i%8)?' ':'\n');
 		}
 		printf("\n%s", answer_for_sets);
 	}
