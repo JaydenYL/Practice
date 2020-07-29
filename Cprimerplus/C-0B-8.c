@@ -38,7 +38,7 @@ void show_array(int n, int array[n])
 {
 	for(int i = 0; i < n; i++)
 	{
-		printf("%4d%c", array[i], (i%10)? ' ': '\n');
+		printf("%4d%c", array[i], ((i+1)%8)? ' ': '\n');
 	}
 	putchar(10);
 	
