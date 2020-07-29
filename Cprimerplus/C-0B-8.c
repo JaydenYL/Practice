@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 
 int * make_array(int n, int value)
 {
-	int * pt = (int *)malloc(n*sizeof(int));
+	int * pt = (int *)malloc((unsigned int)n*sizeof(int));
 	for (int i = 0; i < n; i++)
 		pt[i] = value;
 	return pt;
