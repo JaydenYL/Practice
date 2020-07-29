@@ -5,6 +5,7 @@
 #define answer_for_sets "Enter the number of sets (q to quit): "
 
 int rollem(int);
+int roll_n_dice(int, int);
 
 int main(int argc, char *argv[]) 
 {
@@ -31,7 +32,7 @@ int main(int argc, char *argv[])
 		int i = 0;
 		while (i++ < sets) 
 		{
-			printf("%-3d%c", rollem(sides), (i%8)?' ':'\n');
+			printf("%-3d%c", roll_n_dice(dice, sides), (i%8)?' ':'\n');
 		}
 		printf("\n%s", answer_for_sets);
 	}
@@ -43,4 +44,14 @@ int main(int argc, char *argv[])
 int rollem(int sides)
 {
 	return rand()%6 + 1;
+}
+
+int roll_n_dice(int n, int sides)
+{
+	int total = 0, i = 0;
+	for(; i < n; i ++)
+	{
+		total += rollem(sides);
+	}
+	return total;
 }
