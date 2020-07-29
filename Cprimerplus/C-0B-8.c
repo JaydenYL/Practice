@@ -40,5 +40,6 @@ void show_array(int n, int array[n])
 	{
 		printf("%4d%c", array[i], (i%10)? ' ': '\n');
 	}
+	putchar('\n');
 	
 }
