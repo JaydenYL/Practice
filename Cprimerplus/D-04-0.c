@@ -17,5 +17,13 @@ int main(int argc, char *argv[])
 	while (gets(words) != NULL && words[0] != 0)
 		fprintf(fp, "%s", words);
 	
+	puts("File content: ");
+	rewind(fp);
+	while (fscanf(fp, "%s", words) == 1)
+		puts(words);
+	if (fclose(fp) != 0)
+		fprintf(stderr, "Error closing file\n");
+		
+	return 0;
 	
 }
