@@ -18,4 +18,30 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	
+	if ((in = fopen(argv[1], "r")) == NULL)
+	{
+		fprintf(stderr, "Fail in opening the file.\n");
+		exit(EXIT_FAILURE);
+	}
+	
+	if ((out = fopen("textoutput", "w")) == NULL)
+	{
+		fprintf(stderr, "Fail in creating output file.\n");
+		exit(EXIT_FAILURE);
+	}
+	
+	while((ch = getc(in)) != EOF)
+	{
+		if (count % 3 == 0)
+			putc(ch, out);
+	}
+	
+	if (!fclose(in) || fclose(out))
+	{
+		fprintf(stderr, "Error in closing files.\n");
+		exit(EXIT_FAILURE);
+	}
+	
+	
+	return 0;
 }
