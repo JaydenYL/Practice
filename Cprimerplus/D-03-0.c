@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 			putc(ch, out);
 	}
 	
-	if (!fclose(in) || !fclose(out))
+	if (fclose(in) || fclose(out))
 	{
 		fprintf(stderr, "Error in closing files.\n");
 		exit(EXIT_FAILURE);
