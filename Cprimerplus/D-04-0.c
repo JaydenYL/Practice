@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 	rewind(fp);
 	while (fscanf(fp, "%s", words) == 1)
 		puts(words);
-	if (fclose(fp) != 0)
+	if (fclose(fp))
 		fprintf(stderr, "Error closing file\n");
 		
 	return 0;
