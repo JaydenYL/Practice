@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include <string.h> 	//strcat -- string Concatenation
 #define LEN 40
 
 
