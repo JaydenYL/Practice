@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 	puts("File content: ");
 	rewind(fp);
 	while (fscanf(fp, "%s", words) == 1)
-		puts(words);
+		fprintf(stdout, "%s", words);
 		
 	if (fclose(fp))
 		fprintf(stderr, "Error closing file\n");
