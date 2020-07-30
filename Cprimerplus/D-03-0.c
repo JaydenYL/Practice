@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 	
 	while((ch = getc(in)) != EOF)
 	{
-		if (count % 3 == 0)
+		if (count++ % 3 == 0)
 			putc(ch, out);
 	}
 	
