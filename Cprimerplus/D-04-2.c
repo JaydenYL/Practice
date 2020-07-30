@@ -25,14 +25,15 @@ int main(int argc, char *argv[])
 	for (count = 1L; count <= last; count++)
 	{
 		fseek(fp, -count, SEEK_END);
-		ch = getc(fb);
+		ch = getc(fp);
 		/* For DOS, BUT FUNCTION WELL IN UNIX*/
 //		if (ch != CNTL_Z && ch != '\r')
 //			putchar(ch);
 		/*FOR MAC*/	
 		if (ch == '\r')
-			putchar(10)
-		else putchar(ch)
+			putchar(10);
+		else 
+			putchar(ch);
 	}
 	putchar(10);
 	fclose(fp);
