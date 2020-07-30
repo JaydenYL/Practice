@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
 	FILE *fp;
 	char words[MAX];
 	
-	if ((fp = fopen("words.txt", "a+" )))
+	if ((fp = fopen("words.txt", "a+" )) == NULL)
 	{
 		fprintf(stdout, "Can't open \"words\" file.\n");
 		exit(EXIT_FAILURE);
