@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	
-	if ((out = fopen("textoutput", "w")) == NULL)
+	if ((out = fopen("textoutput.txt", "w")) == NULL)
 	{
 		fprintf(stderr, "Fail in creating output file.\n");
 		exit(EXIT_FAILURE);
