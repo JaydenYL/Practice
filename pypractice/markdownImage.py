@@ -6,12 +6,14 @@ def convertToImg(string, filepath):
 	f.write(imgdata)
 	f.close()
 	return True
+
 	
 def convertToString(filepath):
 	f = open(filepath, 'rb')
 	string = base64.b64encode(f.read())
 	f.close()
-	return string#[2: len(string) - 1]
+	return string	# [2: len(string) - 1]
+
 
 if __name__ == '__main__':
 	path = input("Enter the picture path: ")
