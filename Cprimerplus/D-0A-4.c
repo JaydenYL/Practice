@@ -4,19 +4,20 @@
 int main(int argc, char *argv[]) 
 {
 	char * filepath;
+	FILE * fp;
 	if (argc == 2){
 		filepath = argv[1];
-		FILE * fp = fopen(filepath, "r");
+		fp = fopen(filepath, "r");
 	}
 	else {
 //		filepath = (char *)malloc((unsigned int)sizeof(char)*50);
 //		puts("Enter the file name: ");
 //		scanf("%s", filepath);
-		filepath =stdin;
+		fp =stdin;
 	}
 	double sum = .0, tmp = .0;
 	int count = 0, num;
-	while((num = fscanf(filepath, "%lf", &tmp)) != EOF && num != 0){
+	while((num = fscanf(fp, "%lf", &tmp)) != EOF && num != 0){
 		sum += tmp;
 		count ++;
 	}
