@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 			fprintf(stderr, "Cannot append file to itself.\n");
 			continue;
 		}
-		else if (fs = open(file_src, "r") == NULL)
+		else if (fs = fopen(file_src, "r") == NULL)
 		{
 			fprintf(stderr, "Cannot open file %s", file_src)''
 		}
@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
 void append(FILE * source, FILE * dest)
 {
 	size_t bytes;
-	static char tmp[BUFSIZE];
+	static char temp[BUFSIZE];
 	
 	while((bytes = fread(temp, sizeof(char), BUFSIZE, source)) > 0)
 		fwrite(bytes, sizeof(char), bytes, dest);
