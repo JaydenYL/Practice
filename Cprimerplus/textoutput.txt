@@ -1,4 +1,1 @@
-hlwlso ntrlenhello world
-second line
-third line
-end
+hlwlso ntrlen
