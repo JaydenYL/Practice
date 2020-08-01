@@ -32,9 +32,9 @@ int main(int argc, char *argv[])
 			fprintf(stderr, "Cannot append file to itself.\n");
 			continue;
 		}
-		else if (fs = fopen(file_src, "r") == NULL)
+		else if ((fs = fopen(file_src, "r")) == NULL)
 		{
-			fprintf(stderr, "Cannot open file %s", file_src)''
+			fprintf(stderr, "Cannot open file %s", file_src);
 		}
 		else 
 		{
