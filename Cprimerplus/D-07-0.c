@@ -69,7 +69,7 @@ void append(FILE * source, FILE * dest)
 	static char temp[BUFSIZE];
 	
 	while((bytes = fread(temp, sizeof(char), BUFSIZE, source)) > 0)
-		fwrite(bytes, sizeof(char), bytes, dest);
+		fwrite(temp, sizeof(char), bytes, dest);
 		
 	
 }
