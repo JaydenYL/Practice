@@ -35,14 +35,23 @@ int main(int argc, char *argv[])
 		return 4;
 	
 	else if (ch == 'A')
+	{
+		fprintf(stdout, "copying(binary model) ...");
 		copy_bin(fp_raw, fp_dest);
+	}
 	else 
+	{
+		fprintf(stdout, "copying(text model) ...");
 		copy_txt(fp_raw, fp_dest);
-		
+	}
 	if (fclose(fp_raw))
 		fprintf(stderr, "Error in closing raw file:%s\n", argv[1]);
+		return 5;
 	if (fclose(fp_dest))
 		fprintf(stderr, "Error in closing destination file:%s\n", argv[1]);
+		return 6;
+	
+	fprintf("Successfully copy the file.\n");
 	
 	return 0;
 	
