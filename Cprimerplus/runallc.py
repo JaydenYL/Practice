@@ -1,7 +1,7 @@
 import os;
 
 ls = os.listdir();
-print(ls, len(ls))
+print(ls)
 
 for i in ls:
 	if len(i) > 2 and i[-2:] == ".c":
