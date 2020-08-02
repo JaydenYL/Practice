@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Not enough arguments, expected 3, but %d.\n", argc);
 		return 1;
 	}
-	FILE * fp_raw = fopen(argv[1], "r"), * fp_dest = fopen(argv[2], "r+");
+	FILE * fp_raw = fopen(argv[1], "r"), * fp_dest = fopen(argv[2], "w+");
 	if (fp_raw == NULL)
 	{
 		fprintf(stderr, "Fail in opening raw file %s.\n", argv[1]);
@@ -36,21 +36,24 @@ int main(int argc, char *argv[])
 	
 	else if (ch == 'A')
 	{
-		fprintf(stdout, "copying(binary model) ...");
+		fprintf(stdout, "copying(binary model) ...\n");
 		copy_bin(fp_raw, fp_dest);
 	}
 	else 
 	{
-		fprintf(stdout, "copying(text model) ...");
+		fprintf(stdout, "copying(text model) ...\n");
 		copy_txt(fp_raw, fp_dest);
 	}
 	if (fclose(fp_raw))
+	{
 		fprintf(stderr, "Error in closing raw file:%s\n", argv[1]);
 		return 5;
+	}
 	if (fclose(fp_dest))
+	{
 		fprintf(stderr, "Error in closing destination file:%s\n", argv[1]);
 		return 6;
-	
+	}
 	fprintf(stdout,"Successfully copy the file.\n");
 	
 	return 0;
@@ -60,9 +63,9 @@ int main(int argc, char *argv[])
 
 void copy_bin(FILE * raw, FILE * dest)
 {
-	size_t bytes;
-	static char temp[1];
-	while ((bytes = fread(temp, sizeof(char), 1, raw)))
+	char temp[1];
+	while ((*temp =toupper(fgetc(raw)) > 0))
+		temp[0] = toupper(temp[0]);
 		fwrite(temp, sizeof(char), 1, dest);
 }
 
@@ -70,6 +73,6 @@ void copy_bin(FILE * raw, FILE * dest)
 void copy_txt(FILE * raw, FILE * dest)
 {
 	char ch;
-	while( (ch = fgetc(raw)) != EOF )
+	while( (ch = toupper(fgetc(raw))) != EOF )
 		fputc(ch, dest);
 }
