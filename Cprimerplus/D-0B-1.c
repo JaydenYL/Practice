@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 		count ++;
 	}
 	fclose(fp);
-	printf("File has %ld characters.\n", count);
+	printf("\nFile has %ld characters.\n", count);
 	
 	return 0;
 	
