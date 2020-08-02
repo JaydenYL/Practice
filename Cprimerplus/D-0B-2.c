@@ -52,7 +52,7 @@ void copy_bin(FILE * raw, FILE * dest)
 {
 	size_t bytes;
 	static char temp[1];
-	while ((bytes = fread(temp, sizeof(char), BUFSIZE, raw)))
+	while ((bytes = fread(temp, sizeof(char), 1, raw)))
 		fwrite(temp, sizeof(char), BUFSIZE, dest);
 }
 
