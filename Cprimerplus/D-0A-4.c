@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 	int count = 0, num;
 	if (argc != 2)
 		puts("Enter numbers (q to finish):");
-	while((num = fscanf(fp, "%lf", &tmp)) != EOF && num != 0){
+	while((num = fscanf(fp, "%lf", &tmp)) > 0){
 		sum += tmp;
 		count ++;
 	}
