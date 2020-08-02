@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 		return 3;
 	}
 	
-	fprintf(stdout, "Choose the model:\n A.binary \t	B.text\n");
+	fprintf(stdout, "Choose the model:\nA.binary \t	B.text\n");
 	char ch ;
 	if ((ch = toupper(getchar())) != 'A' && ch != 'B')
 		return 4;
@@ -51,11 +51,12 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Error in closing destination file:%s\n", argv[1]);
 		return 6;
 	
-	fprintf("Successfully copy the file.\n");
+	fprintf(stdout,"Successfully copy the file.\n");
 	
 	return 0;
 	
 }
+
 
 void copy_bin(FILE * raw, FILE * dest)
 {
