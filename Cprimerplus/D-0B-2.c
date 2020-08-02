@@ -2,6 +2,7 @@
 // argv[1]: raw      argv[2] destination
 
 #include <stdio.h>
+#include <ctype.h>
 
 #define BUFSIZE 256
 
@@ -10,6 +11,7 @@ void copy_txt(FILE * raw, FILE * dest);
 
 int main(int argc, char *argv[]) 
 {
+	
 	if (argc < 3)
 	{
 		fprintf(stderr, "Not enough arguments, expected 3, but %d.\n", argc);
@@ -29,7 +31,7 @@ int main(int argc, char *argv[])
 	
 	fprintf(stdout, "Choose the model:\n A.binary \t	B.text\n");
 	char ch ;
-	if ((ch = getchar()) != 'A' && ch != 'B')
+	if ((ch = toupper(getchar())) != 'A' && ch != 'B')
 		return 4;
 	
 	else if (ch == 'A')
@@ -49,8 +51,8 @@ int main(int argc, char *argv[])
 void copy_bin(FILE * raw, FILE * dest)
 {
 	size_t bytes;
-	static char temp[BUFSIZE];
-	while((bytes = fread(temp, sizeof(char), BUFSIZE, raw)))
+	static char temp[1];
+	while ((bytes = fread(temp, sizeof(char), BUFSIZE, raw)))
 		fwrite(temp, sizeof(char), BUFSIZE, dest);
 }
 
