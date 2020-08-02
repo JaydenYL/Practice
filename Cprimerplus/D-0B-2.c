@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 	if ((ch = getchar()) != 'A' && ch != 'B')
 		return 4;
 	
-	else if (ch = 'A')
+	else if (ch == 'A')
 		copy_bin(fp_raw, fp_dest);
 	else 
 		copy_txt(fp_raw, fp_dest);
@@ -55,9 +55,9 @@ void copy_bin(FILE * raw, FILE * dest)
 }
 
 
-void copyt_txt(FILE * raw, FILE * dest)
+void copy_txt(FILE * raw, FILE * dest)
 {
 	char ch;
-	while(	(ch = fgetc(raw)) != EOF)
+	while( (ch = fgetc(raw)) != EOF )
 		fputc(ch, dest);
 }
