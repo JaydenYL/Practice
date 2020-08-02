@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 		sum += tmp;
 		count ++;
 	}
-	
+	fclose(fp);
 	printf("The average of array is %.3lf\n", sum/count);
 	
 	return 0;

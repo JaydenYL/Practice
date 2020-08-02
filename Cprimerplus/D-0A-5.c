@@ -9,24 +9,24 @@ int main(int argc, char *argv[])
 	int count;
 	if (argc < 3)
 	{
-		puts("Insufficient arguement\n");
+		fprintf(stdin, "Insufficient arguement\n");
 		exit(1);
 	}
 	FILE * fp = fopen(argv[2], "r");
 	if (fp == NULL)
 	{
-		printf("Error in opening the file %s", argv[2]);
+		fprintf(stderr, "Error in opening the file %s", argv[2]);
 		exit(EXIT_FAILURE);
 	}
 	while(fgets(buf, 256, fp) != NULL && buf[0] )
 	{
-		
 		if (contains(buf, *argv[1]))
 		{
 			puts(buf);
 			count++;
 		}
 	}
+	fclose(fp);
 	
 	
 	return 0;
