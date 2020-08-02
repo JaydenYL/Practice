@@ -13,9 +13,15 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 	FILE * fp = fopen(argv[2], "r");
-	while(fgets(buf, fp) != EOF && buf[0] )
+	if (fp == NULL)
 	{
-		if (contains(buf, argv[1]))
+		printf("Error in opening the file %s", argv[2]);
+		exit(EXIT_FAILURE);
+	}
+	while(fgets(buf, 256, fp) != NULL && buf[0] )
+	{
+		
+		if (contains(buf, *argv[1]))
 		{
 			puts(buf);
 			count++;
@@ -23,7 +29,7 @@ int main(int argc, char *argv[])
 	}
 	
 	
-	return 0
+	return 0;
 	
 	
 }
