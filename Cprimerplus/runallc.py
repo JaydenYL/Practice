@@ -5,4 +5,4 @@ print(ls, len(ls))
 
 for i in ls:
 	if len(i) > 2 and i[-2:] == ".c":
-		os.system("gcc {}".format(i))
+		os.system("gcc {} -o {}".format(i, i[:-2]))
