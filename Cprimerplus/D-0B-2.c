@@ -14,10 +14,11 @@ int main(int argc, char *argv[])
 	
 	if (argc < 3)
 	{
+		fprintf(stderr, "Usage ./a.out [raw] [copy]\n");
 		fprintf(stderr, "Not enough arguments, expected 3, but %d.\n", argc);
 		return 1;
 	}
-	FILE * fp_raw = fopen(argv[1], "r"), * fp_dest = fopen(argv[2], "w+");
+	FILE * fp_raw = fopen(argv[1], "rb"), * fp_dest = fopen(argv[2], "wb");
 	if (fp_raw == NULL)
 	{
 		fprintf(stderr, "Fail in opening raw file %s.\n", argv[1]);
@@ -64,9 +65,9 @@ int main(int argc, char *argv[])
 void copy_bin(FILE * raw, FILE * dest)
 {
 	char temp[1];
-	while ((*temp =toupper(fgetc(raw)) > 0))
+	while ((fread(temp, sizeof(char), 1, raw)) )
 		temp[0] = toupper(temp[0]);
-		fwrite(temp, sizeof(char), 1, dest);
+		fwrite(temp, sizeof(temp), 1, dest);
 }
 
 
