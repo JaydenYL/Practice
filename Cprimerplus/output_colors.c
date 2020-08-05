@@ -1,6 +1,6 @@
 #include <stdio.h>
-#define RED  	"\e[0;31m"
-#define L_RED	"\e[5;31m"
+#define RED  	"\e[3;31m"
+#define L_RED	"\e[3;31m"
 #define NONE	"\e[0m"
 
 
