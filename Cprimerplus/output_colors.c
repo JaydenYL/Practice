@@ -1,7 +1,8 @@
 #include <stdio.h>
 #define RED  	"\e[0;31m"
-#define L_RED	"\e[1;31m"
+#define L_RED	"\e[5;31m"
 #define NONE	"\e[0m"
+
 
 int main(int argc, char *argv[]) 
 {
