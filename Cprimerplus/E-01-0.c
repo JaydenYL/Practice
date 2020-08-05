@@ -21,9 +21,6 @@ int main(int argc, char *argv[])
 	printf("\e[3;33m%s\e[0m by \e[0;31m%s \e[0m: \e[0;30m$%.2f[0m\n", abook.title, abook.auth, abook.value);
 	
 	
-	
-	
-	
 	return 0;
 	
 }
