@@ -16,7 +16,7 @@ double sum(const struct funds);
 int main(int argc, char *argv[]) 
 {
 	struct funds fd = {
-		"bank of China",
+		"bank of China",.
 		10000,
 		"bank fo australia",
 		100000
