@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
 	printf("Non-numeric input terminates the program\n");
 	while (scanf("%d", &num) == 1) 
 	{
+		while(getchar() != 10);
 		itobs(num, bin_str);
 		fputs(bin_str, stdout);
 		putchar(10);
