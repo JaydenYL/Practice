@@ -46,6 +46,7 @@ int stoi(const char * const str)
 }
 
 
+
 int rotate(int num, int bit)
 {
 	int buf = 0;
@@ -58,6 +59,8 @@ int rotate(int num, int bit)
 	return num | buf;
 	
 }
+
+
 
 char * itobs(int num, char * cp)
 {
