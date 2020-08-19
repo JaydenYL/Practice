@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int stoi(char *);
+int stoi(const char *);
 
 int main(int argc, char *argv[]) 
 {
@@ -16,14 +17,19 @@ int main(int argc, char *argv[])
 	return 0;
 }
 
-int stoi(char * str)
+int stoi(const char * const str)
 {
 	if (! str) return 0;
 	int result = 0;
-	for(char * pt = str; *str; str++)
+	for(const char * pt = str; *pt; pt++)
 	{
+		if (*str != '0' && *str != '1')
+		{
+			fprintf(stderr, "%s is not a binary number!\n", str);
+			exit(-1);
+		}
 		result <<= 1;
-		result += *str - '0';
+		result += *pt - '0';
 	}
 	return result;
 }
