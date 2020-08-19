@@ -23,6 +23,6 @@ int invert_end(int num, int bits)
 		mask |= bitval;
 		bitval <<= 1; 
 	}
-	
+
 	return num ^ mask;
 }
