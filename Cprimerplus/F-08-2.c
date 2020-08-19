@@ -41,7 +41,7 @@ int stoi(const char * const str)
 
 char * itobs(int num, char * cp)
 {
-	int size = sizeof(int);
+	int size = sizeof(int)*8;
 	for(int i = size-1; i >=0 ; i--)
 	{
 		cp[i] = (num&01) + '0';
