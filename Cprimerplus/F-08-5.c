@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define SIZE sizeof(int)*8
+#define SIZE (int)sizeof(int)*8
 
 int stoi(const char * const str);
 int rotate(int num, int bit);
@@ -58,7 +58,7 @@ int rotate(int num, const int bit)
 		num <<= 1;
 	}
 	char buff[33];
-	printf("num : %s\nbuf : %s\nnum | buf : %s\n", itobs(num, buff), itobs(buf, buff), itobs(num | buf, buff));
+//	printf("num : %s\nbuf : %s\nnum | buf : %s\n", itobs(num, buff), itobs(buf, buff), itobs(num | buf, buff));
 	printf("num : %s\n", itobs(num, buff));
 	printf("buf : %s\n", itobs(buf, buff));
 	printf("num | buf : %s\n", itobs(num | buf, buff));
