@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define SIZE (int)sizeof(int)*8
+#define INT_SIZE (int)sizeof(int)*8
 
 int stoi(const char * const str);
 int rotate(int num, int bit);
@@ -9,7 +9,7 @@ char * itobs(int num, char * cp);
 
 int main(int argc, char *argv[]) 
 {
-	char strs[SIZE + 1], buf[SIZE +1];
+	char strs[INT_SIZE + 1], buf[INT_SIZE +1];
 	int b, result;
 	printf("Enter a binary number(q to quit): ");
 
@@ -72,8 +72,7 @@ int rotate(int num, const int bit)
 
 char * itobs(int num, char * cp)
 {
-	int size = sizeof(int)*8;
-	for(int i = size-1; i >=0 ; i--)
+	for(int i = INT_SIZE-1; i >=0 ; i--)
 	{
 		cp[i] = (num&01) + '0';
 		num >>= 1;
