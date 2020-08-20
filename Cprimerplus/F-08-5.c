@@ -51,21 +51,26 @@ int stoi(const char * const str)
 int rotate(int num, const int bit)
 {
 	int buf = 0;
+	char buff[33];
 	for (int i = 0; i < bit; i ++)
 	{
+		printf("%d\n", itobs((num >> (SIZE - 1), buff))
 		buf |= (num >> (SIZE - 1));
 		buf <<= 1;
 		num <<= 1;
 	}
-	char buff[33];
+	
+	
 //	printf("num : %s\nbuf : %s\nnum | buf : %s\n", itobs(num, buff), itobs(buf, buff), itobs(num | buf, buff));
 	itobs(num, buff);
 	printf("num : %s\n", buff);
-	itobs(buf, buff)
+	itobs(buf, buff);
 	printf("buf : %s\n", buff);
-	itobs(num | buf, buff)
+	itobs(num | buf, buff);
 	printf("num | buf : %s\n", buff);
 //	printf("num : %s\nbuf : %s\nnum | buf : %s\n", itobs(num, buff), itobs(buf, buff), itobs(num | buf, buff));
+	
+	
 	return num | buf;
 	
 }
