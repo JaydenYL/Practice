@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
 		printf("Enter the bits you want to move: ");
 		scanf("%d", &b);
 		while(getchar()!=10);
+		
 		result = stoi(strs);
 		result = rotate(result, b);
 		printf("\e[31mBefore: %s\n\e[32mAfter : %s\n\e[0m", strs, itobs(result, buf));
