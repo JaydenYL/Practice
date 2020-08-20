@@ -59,9 +59,12 @@ int rotate(int num, const int bit)
 	}
 	char buff[33];
 //	printf("num : %s\nbuf : %s\nnum | buf : %s\n", itobs(num, buff), itobs(buf, buff), itobs(num | buf, buff));
-	printf("num : %s\n", itobs(num, buff));
-	printf("buf : %s\n", itobs(buf, buff));
-	printf("num | buf : %s\n", itobs(num | buf, buff));
+	itobs(num, buff);
+	printf("num : %s\n", buff);
+	itobs(buf, buff)
+	printf("buf : %s\n", buff);
+	itobs(num | buf, buff)
+	printf("num | buf : %s\n", buff);
 //	printf("num : %s\nbuf : %s\nnum | buf : %s\n", itobs(num, buff), itobs(buf, buff), itobs(num | buf, buff));
 	return num | buf;
 	
