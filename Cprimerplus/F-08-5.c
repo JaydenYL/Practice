@@ -9,7 +9,6 @@ char * itobs(int num, char * cp);
 
 int main(int argc, char *argv[]) 
 {
-	printf("%d\n", SIZE);
 	char strs[SIZE + 1], buf[SIZE +1];
 	int b, result;
 	printf("Enter a binary number: ");
@@ -41,23 +40,29 @@ int stoi(const char * const str)
 			fprintf(stderr, "%s is not a binary number!\n", str);
 			exit(-1);
 		}
-		result <<= 1;
 		result += *pt - '0';
+		result <<= 1;
 	}
 	return result;
 }
 
 
 
-int rotate(int num, int bit)
+int rotate(int num, const int bit)
 {
 	int buf = 0;
 	for (int i = 0; i < bit; i ++)
 	{
-		buf += (num >> (SIZE - 1));
+		buf |= (num >> (SIZE - 1));
 		buf <<= 1;
 		num <<= 1;
 	}
+	char buff[33];
+	printf("num : %s\nbuf : %s\nnum | buf : %s\n", itobs(num, buff), itobs(buf, buff), itobs(num | buf, buff));
+	printf("num : %s\n", itobs(num, buff));
+	printf("buf : %s\n", itobs(buf, buff));
+	printf("num | buf : %s\n", itobs(num | buf, buff));
+//	printf("num : %s\nbuf : %s\nnum | buf : %s\n", itobs(num, buff), itobs(buf, buff), itobs(num | buf, buff));
 	return num | buf;
 	
 }
