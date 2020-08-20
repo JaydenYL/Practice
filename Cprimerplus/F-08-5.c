@@ -9,6 +9,7 @@ char * itobs(int num, char * cp);
 
 int main(int argc, char *argv[]) 
 {
+	printf("%d\n", SIZE);
 	char strs[SIZE + 1], buf[SIZE +1];
 	int b, result;
 	printf("Enter a binary number: ");
@@ -16,9 +17,10 @@ int main(int argc, char *argv[])
 	{
 		printf("Enter the bits you want to move: ");
 		scanf("%d", &b);
+		while(getchar()!=10);
 		result = stoi(strs);
 		result = rotate(result, b);
-		printf("Before: %s\nAfter : %s\n", strs, itobs(result, buf));
+		printf("\e[31mBefore: %s\n\e[32mAfter : %s\n\e[0m", strs, itobs(result, buf));
 		printf("Enter a binary number: ");
 	}
 	
