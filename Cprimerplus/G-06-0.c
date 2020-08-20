@@ -2,6 +2,7 @@
 
 int main(int argc, char *argv[]) 
 {
+// __DATE__, __TIME__ are both static ?
 
 		printf("\b\r%s %s\n", __DATE__, __TIME__);
 		sleep(3);
