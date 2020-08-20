@@ -60,7 +60,7 @@ int rotate(int num, const int bit)
 	for (int i = 0; i < bit; i ++)
 	{
 		buf <<= 1;       // buf should be operated before `or` operation 
-		buf |= ((unsigned)num >> (SIZE - 1));
+		buf |= ((unsigned)num >> (INT_SIZE - 1));
 //		printf("buf: %s\n", itobs(buf, buff));
 		num <<= 1;
 	}
@@ -72,11 +72,11 @@ int rotate(int num, const int bit)
 
 char * itobs(int num, char * cp)
 {
-	for(int i = INT_SIZE-1; i >=0 ; i--)
+	for(int i = INT_SIZE - 1; i >=0 ; i--)
 	{
 		cp[i] = (num&01) + '0';
 		num >>= 1;
 	}
-	cp[size] = 0;
+	cp[INT_SIZE] = 0;
 	return cp;
 }
