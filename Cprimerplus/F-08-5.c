@@ -12,6 +12,17 @@ int main(int argc, char *argv[])
 	char strs[SIZE + 1], buf[SIZE +1];
 	int b, result;
 	printf("Enter a binary number: ");
+	
+	
+	
+//	scanf("%s", strs);
+//	result = stoi(strs);
+//	printf("%d\n", result);
+//	
+//	
+	
+	
+	
 	while(scanf("%s", strs))
 	{
 		printf("Enter the bits you want to move: ");
@@ -40,8 +51,9 @@ int stoi(const char * const str)
 			fprintf(stderr, "%s is not a binary number!\n", str);
 			exit(-1);
 		}
-		result += *pt - '0';
 		result <<= 1;
+		result |= *pt - '0';
+		
 	}
 	return result;
 }
@@ -51,26 +63,13 @@ int stoi(const char * const str)
 int rotate(int num, const int bit)
 {
 	int buf = 0;
-	char buff[33];
 	for (int i = 0; i < bit; i ++)
 	{
-		printf("%d\n", itobs((num >> (SIZE - 1), buff))
-		buf |= (num >> (SIZE - 1));
-		buf <<= 1;
+		buf <<= 1;       // buf should be operated before `or` operation 
+		buf |= ((unsigned)num >> (SIZE - 1));
+//		printf("buf: %s\n", itobs(buf, buff));
 		num <<= 1;
 	}
-	
-	
-//	printf("num : %s\nbuf : %s\nnum | buf : %s\n", itobs(num, buff), itobs(buf, buff), itobs(num | buf, buff));
-	itobs(num, buff);
-	printf("num : %s\n", buff);
-	itobs(buf, buff);
-	printf("buf : %s\n", buff);
-	itobs(num | buf, buff);
-	printf("num | buf : %s\n", buff);
-//	printf("num : %s\nbuf : %s\nnum | buf : %s\n", itobs(num, buff), itobs(buf, buff), itobs(num | buf, buff));
-	
-	
 	return num | buf;
 	
 }
