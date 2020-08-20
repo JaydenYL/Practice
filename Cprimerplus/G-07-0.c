@@ -1,5 +1,13 @@
+// inline function
+
 #include <stdio.h>
 
-int main(int argc, char *argv[]) {
+inline void eatline()
+{
+	while(getchar() != 10);	
+}
+
+int main(int argc, char *argv[]) 
+{
 	
 }
