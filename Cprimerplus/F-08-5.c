@@ -11,27 +11,20 @@ int main(int argc, char *argv[])
 {
 	char strs[SIZE + 1], buf[SIZE +1];
 	int b, result;
-	printf("Enter a binary number: ");
-	
-	
-	
-//	scanf("%s", strs);
-//	result = stoi(strs);
-//	printf("%d\n", result);
-//	
-//	
-	
-	
-	
+	printf("Enter a binary number(q to quit): ");
+
 	while(scanf("%s", strs))
 	{
+		if (*strs == 'q')
+			exit(1);
 		printf("Enter the bits you want to move: ");
 		scanf("%d", &b);
 		while(getchar()!=10);
 		result = stoi(strs);
 		result = rotate(result, b);
 		printf("\e[31mBefore: %s\n\e[32mAfter : %s\n\e[0m", strs, itobs(result, buf));
-		printf("Enter a binary number: ");
+		
+		printf("Enter a binary number(q to quit): ");
 	}
 	
 	
