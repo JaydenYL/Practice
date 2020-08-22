@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 
 void function_1(void);
@@ -20,7 +21,7 @@ int main(int argc, char *argv[])
 
 void function_1(void)
 {
-	puts("exit with function 111")
+	puts("exit with function 111");
 }
 
 void function_2(void)
