@@ -21,13 +21,17 @@ int main(int argc, char *argv[])
 		printf("You entered %d\n", num);
 	}
 	
-//	return 0;
+	return 0;
 }
+
+
 
 void function_1(void)
 {
 	puts("exit with function 111");
 }
+
+
 
 void function_2(void)
 {
