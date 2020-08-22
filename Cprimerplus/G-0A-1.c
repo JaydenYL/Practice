@@ -35,7 +35,7 @@ void fillarray(double ar[], int n)
 void showarray(double ar[], int n)
 {
 	for (int i = 0; i < n; i++)
-		printf("%lf%c", ar[i], ((i+1)%8)? ' ': '\n');
+		printf("%9.4lf%c", ar[i], ((i+1)%8)? ' ': '\n');
 }
 
 
