@@ -9,11 +9,16 @@ int main(int argc, char *argv[])
 {
 	atexit(function_1);
 	int num;
+	puts("Please enter a integer");
 	if(scanf("%d", &num) != 1)
 	{
+		
 		atexit(function_2);
 		printf("Not a number\n");
 		exit(-1);
+	}
+	else {
+		printf("You entered %d\n", num);
 	}
 	
 //	return 0;
