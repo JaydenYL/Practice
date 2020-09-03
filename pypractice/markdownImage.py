@@ -16,7 +16,7 @@ def convertToString(filepath):
 	
 
 def instruction():
-	print("Makrdown Usage:\n\t![avatar](data: img/png; base64, {{string}})\n")
+	print("Makrdown Usage:\n\t![avatar](data: image/png; base64, {{string}})\n")
 
 
 if __name__ == '__main__':
