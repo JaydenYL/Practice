@@ -21,7 +21,7 @@ def instruction():
 
 if __name__ == '__main__':
 	instruction()
-	path = input("Enter the picture path: ")
+	path = "/Users/yu/" + input("Enter the picture path: ")
 	data = convertToString(path)
 	print(data)
 	print("\n\nDo you need to make a image in a markdown file(Y\\N):")
@@ -29,9 +29,9 @@ if __name__ == '__main__':
 	if (option.upper() == "Y"):
 		pyperclip.copy(str(data))
 		instruction()
-	path = input("Enter the new path to save the image: ")
+	path = "/Users/yu/" + input("Enter the new path to save the image: ")
 	if path[0:4] == 'quit':
-		sys.exit(1)
+		quit()
 	if (convertToImg(data, path)):
 		print("Successfully saved the image.")
 	else :
