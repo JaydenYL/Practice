@@ -30,9 +30,9 @@ if __name__ == '__main__':
 		pyperclip.copy(str(data))
 		instruction()
 	path = "/Users/yu/" + input("Enter the new path to save the image: ")
-	if path[0:4] == 'quit':
+	if path[-4:] == 'quit':
 		quit()
-	if (convertToImg(data, path)):
-		print("Successfully saved the image.")
+#	if (convertToImg(data, path)):
+#		print("Successfully saved the image.")
 	else :
 		print("Fail in saving the picture.")
