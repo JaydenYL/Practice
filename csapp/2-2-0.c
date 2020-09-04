@@ -1,4 +1,5 @@
 //different value after each run
+//priority of addition and minus is higher than bitwise operation
 
 #include <stdio.h>
 
