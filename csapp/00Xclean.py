@@ -33,7 +33,7 @@ if remove_ls:
 	print()
 	option_choice = random.choice(['beavis.zen', 'blowfish', 'bong', 'bud-frogs', 'bunny', 'cheese', 'cower', 'daemon', 'default', 'dragon','dragon-and-cow', 'elephant', 'elephant-in-snake', 'eyes', 'flaming-sheep', 'ghostbusters','head-in', 'hellokitty', 'kiss', 'kitty', 'koala', 'kosh', 'luke-koala', 'meow', 'milk', 'moofasa', 'moose', 'mutilated', 'ren', 'satanic', 'sheep', 'skeleton', 'small', 'sodomized', 'stegosaurus', 'stimpy','supermilker', 'surgery', 'telebears', 'three-eyes', 'turkey', 'turtle', 'tux', 'udder', 'vader','vader-koala', 'www'])
 	
-	os.system('cowthink -f {0} {0}'.format(option_choice))
+	os.system('cowthink -f {0} {0}-cleaner'.format(option_choice))
 else:
 	print('\n\033[1;30;47mNo Need to Clean  =) \033[0m  \U0001F607')
 	os.system('cowthink -f sodomized Awww man !')
