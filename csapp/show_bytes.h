@@ -9,3 +9,4 @@ void show_byte(unsigned char * pt, int len)
 		printf("%.2x%c", pt[i], (i < len -1) ? 32 : 10);
 	}
 }
+

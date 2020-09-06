@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #include "show_bytes.h"
+
 int main(int argc, char *argv[]) 
 {
 	short a = -12345;
