@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <limits.h>
 
 int uadd_ok(unsigned , unsigned);
 
@@ -7,6 +8,11 @@ int main(int argc, char *argv[])
 	int a = 1 << 31;
 	int b = 1 << 31;
 	
+	
+	printf(uadd_ok(a, b) ? "OK\n" : "Not ok\n");
+	
+	a = UINT_MAX;
+	b = 1;
 	printf(uadd_ok(a, b) ? "OK\n" : "Not ok\n");
 	
 	return 0;
