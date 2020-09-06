@@ -6,6 +6,6 @@ void show_byte(unsigned char * pt, int len)
 {
 		for(int i = 0; i < len ; i ++)
 	{
-		printf("%x%c", pt[i], (i < len -1) ? 32 : 10);
+		printf("%.2x%c", pt[i], (i < len -1) ? 32 : 10);
 	}
 }
