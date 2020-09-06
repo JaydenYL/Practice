@@ -17,10 +17,10 @@ int main(int argc, char *argv[])
 	a = (b = INT_MAX);
 	printf(uadd_ok(a, b) ? "OK\n" : "Not ok\n");
 	
-	
 	return 0;
 	
 }
+
 
 int uadd_ok(unsigned x, unsigned y)
 {
