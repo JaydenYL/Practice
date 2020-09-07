@@ -1,3 +1,5 @@
+// MacOS uses small endian 
+
 #include <stdio.h>
 #include <arpa/inet.h>
 
