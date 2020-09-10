@@ -3,7 +3,8 @@ import time
 
 print ("Before fork process pid=%s, ppid=%s" % (os.getpid(), os.getppid()))
 
-pid = os.fork()
+pid = os.fork() #会有两个进程运行这之后的代码，它们的pid（process id）不一样
+
 if pid == 0:
 	print ("I am child process pid=%s, ppid=%s" % (os.getpid(), os.getppid()))
 #	time.sleep(5)
