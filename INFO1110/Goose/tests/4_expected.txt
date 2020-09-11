@@ -1,0 +1,27 @@
+
+
+    [x]-[C]
+
+
+You are now at: Stairway.
+There is nothing here.
+
+>> You move east, to Goose Heaven.
+
+Dog is trying to catch you!
+But your presence still terrifies them...
+
+
+[ ]-[x]
+
+
+You are now at: Goose Heaven.
+A dog is barking at you!
+The path to freedom is clear. You can FLEE this place.
+
+>> You sneak up behind your quarry and honk with all the force of a really angry airhorn! HONK!
+Dog is spooked! They flee immediately!
+
+None can stand against the power of the goose!
+========= V I C T O R Y =========
+

@@ -1,0 +1,24 @@
+
+
+    [x]-[C]
+
+
+You are now at: Stairway.
+There is nothing here.
+
+>> You move east, to Goose Heaven.
+
+Dog is trying to catch you!
+But your presence still terrifies them...
+
+
+[ ]-[x]
+
+
+You are now at: Goose Heaven.
+A dog is barking at you!
+The path to freedom is clear. You can FLEE this place.
+
+>> You slip past the dastardly Goosechasers and run off into the wilderness! Freedom at last!
+========= F R E E D O M =========
+

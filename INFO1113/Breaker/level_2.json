@@ -1,0 +1,303 @@
+{
+	"name" : "Level_2",
+	"bricks" : [
+		{
+			"x" : 0,
+			"y" : 0,
+			"id" : "brick_red",
+			"powerup" : "multiball"
+		},
+		{
+			"x" : 20,
+			"y" : 0,
+			"id" : "brick_blue",
+			"powerup" : "multiball"
+		},
+		{
+			"x" : 40,
+			"y" : 0,
+			"id" : "brick_red"
+		},
+		{
+			"x" : 60,
+			"y" : 0,
+			"id" : "brick_green"
+		},
+		{
+			"x" : 80,
+			"y" : 0,
+			"id" : "brick_red"
+		},
+		{
+			"x" : 100,
+			"y" : 0,
+			"id" : "brick_red"
+		},
+		{
+			"x" : 120,
+			"y" : 0,
+			"id" : "brick_red"
+		},
+		{
+			"x" : 140,
+			"y" : 0,
+			"id" : "brick_green"
+		},
+		{
+			"x" :160,
+			"y" : 0,
+			"id" : "brick_green"
+		},
+		{
+			"x" : 180,
+			"y" : 0,
+			"id" : "brick_red"
+		},
+		{
+			"x" : 200,
+			"y" : 0,
+			"id" : "brick_red",
+			"powerup" : "multiball"
+		},
+		
+		{
+			"x" : 220,
+			"y" : 0,
+			"id" : "brick_blue"
+		},
+		{
+			"x" : 240,
+			"y" : 0,
+			"id" : "brick_pink",
+			"powerup" : "multiball"
+		},
+		{
+			"x" : 260,
+			"y" : 0,
+			"id" : "brick_pink",
+			"powerup" : "multiball"
+		},
+		{
+			"x" : 280,
+			"y" : 0,
+			"id" : "brick_green",
+			"powerup" : "multiball"
+		},
+		{
+			"x" : 300,
+			"y" : 0,
+			"id" : "brick_red",
+			"powerup" : "multiball"
+		},
+		{
+			"x" : 320,
+			"y" : 0,
+			"id" : "brick_blue",
+			"powerup" : "multiball"
+		},
+		{
+			"x" : 340,
+			"y" : 0,
+			"id" : "brick_blue"
+		},
+		{
+			"x" : 360,
+			"y" : 0,
+			"id" : "brick_pink"
+		},
+		{
+			"x" : 380,
+			"y" : 0,
+			"id" : "brick_red",
+			"powerup" : "multiball"
+		},
+		{
+			"x" : 400,
+			"y" : 0,
+			"id" : "brick_red",
+			"powerup" : "multiball"
+		},
+		{
+			"x" : 420,
+			"y" : 0,
+			"id" : "brick_blue"
+		},
+		{
+			"x" : 440,
+			"y" : 0,
+			"id" : "brick_pink",
+			"powerup" : "paddleup"
+		},
+		{
+			"x" : 460,
+			"y" : 0,
+			"id" : "brick_green",
+			"powerup" : "paddleup"
+		},
+		{
+			"x" : 480,
+			"y" : 0,
+			"id" : "brick_red"
+		},
+		{
+			"x" : 500,
+			"y" : 0,
+			"id" : "brick_blue",
+			"powerup" : "paddleup"
+		},
+		{
+			"x" : 0,
+			"y" : 20,
+			"id" : "brick_red"
+		},
+		{
+			"x" : 20,
+			"y" : 10,
+			"id" : "brick_blue",
+			"powerup" : "paddleup"
+		},
+		{
+			"x" : 40,
+			"y" : 20,
+			"id" : "brick_red",
+			"powerup" : "multiball"
+		},
+		{
+			"x" : 60,
+			"y" : 10,
+			"id" : "brick_green",
+			"powerup" : "paddleup"
+		},
+		{
+			"x" : 80,
+			"y" : 20,
+			"id" : "brick_red",
+			"powerup" : "paddleup"
+		},
+		{
+			"x" : 100,
+			"y" : 10,
+			"id" : "brick_red",
+			"powerup" : "multiball"
+		},
+		{
+			"x" : 120,
+			"y" : 20,
+			"id" : "brick_red",
+			"powerup" : "paddleup"
+		},
+		{
+			"x" : 140,
+			"y" : 10,
+			"id" : "brick_green",
+			"powerup" : "multiball"
+		},
+		{
+			"x" :160,
+			"y" : 20,
+			"id" : "brick_green",
+			"powerup" : "paddleup"
+		},
+		{
+			"x" : 180,
+			"y" : 10,
+			"id" : "brick_red",
+			"powerup" : "multiball"
+		},
+		{
+			"x" : 200,
+			"y" : 20,
+			"id" : "brick_red",
+			"powerup" : "multiball"
+		},
+		
+		{
+			"x" : 220,
+			"y" : 10,
+			"id" : "brick_blue",
+			"powerup" : "multiball"
+		},
+		{
+			"x" : 240,
+			"y" : 20,
+			"id" : "brick_pink",
+			"powerup" : "paddleup"
+		},
+		{
+			"x" : 260,
+			"y" : 10,
+			"id" : "brick_pink",
+			"powerup" : "multiball"
+		},
+		{
+			"x" : 280,
+			"y" : 20,
+			"id" : "brick_green",
+			"powerup" : "multiball"
+		},
+		{
+			"x" : 300,
+			"y" : 10,
+			"id" : "brick_red"
+		},
+		{
+			"x" : 320,
+			"y" : 20,
+			"id" : "brick_blue",
+			"powerup" : "multiball"
+		},
+		{
+			"x" : 340,
+			"y" : 10,
+			"id" : "brick_blue",
+			"powerup" : "multiball"
+		},
+		{
+			"x" : 360,
+			"y" : 20,
+			"id" : "brick_pink"
+		},
+		{
+			"x" : 380,
+			"y" : 10,
+			"id" : "brick_red",
+			"powerup" : "multiball"
+		},
+		{
+			"x" : 400,
+			"y" : 20,
+			"id" : "brick_red",
+			"powerup" : "paddleup"
+		},
+		{
+			"x" : 420,
+			"y" : 10,
+			"id" : "brick_blue",
+			"powerup" : "paddleup"
+		},
+		{
+			"x" : 440,
+			"y" : 20,
+			"id" : "brick_pink",
+			"powerup" : "paddleup"
+		},
+		{
+			"x" : 460,
+			"y" : 10,
+			"id" : "brick_green",
+			"powerup" : "paddleup"
+		},
+		{
+			"x" : 480,
+			"y" : 20,
+			"id" : "brick_red",
+			"powerup" : "paddleup"
+		},
+		{
+			"x" : 500,
+			"y" : 10,
+			"id" : "brick_blue",
+			"powerup" : "paddleup"
+		}
+	]
+}

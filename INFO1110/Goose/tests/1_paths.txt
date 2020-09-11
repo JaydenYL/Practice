@@ -1,0 +1,2 @@
+Stairway > EAST > Goose Heaven
+Goose Heaven > WEST > Stairway

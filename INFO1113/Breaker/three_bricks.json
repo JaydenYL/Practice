@@ -1,0 +1,164 @@
+{
+    "name" : "three_bricks",
+    "next_level" : "level_1",
+    "bricks" : [
+        {
+            "x" : 0,
+            "y" : 0,
+            "id" : "brick_red",
+            "powerup" : "multiball"
+        },
+        {
+            "x" : 20,
+            "y" : 0,
+            "id" : "brick_blue",
+            "powerup" : "multiball"
+        },
+        {
+            "x" : 40,
+            "y" : 0,
+            "id" : "brick_red",
+            "powerup" : "multiball"
+        }
+        {
+            "x" : 60,
+            "y" : 0,
+            "id" : "brick_green",
+            "powerup" : "multiball"
+        },
+        {
+            "x" : 80,
+            "y" : 0,
+            "id" : "brick_red",
+            "powerup" : "multiball"
+        },
+        {
+            "x" : 100,
+            "y" : 0,
+            "id" : "brick_red",
+            "powerup" : "multiball"
+        },
+        {
+            "x" : 120,
+            "y" : 0,
+            "id" : "brick_red",
+            "powerup" : "multiball"
+        },
+        {
+            "x" : 140,
+            "y" : 0,
+            "id" : "brick_green",
+            "powerup" : "multiball"
+        },
+        {
+            "x" :160,
+            "y" : 0,
+            "id" : "brick_green",
+            "powerup" : "multiball"
+        },
+        {
+            "x" : 180,
+            "y" : 0,
+            "id" : "brick_red",
+            "powerup" : "multiball"
+        },
+        {
+            "x" : 200,
+            "y" : 0,
+            "id" : "brick_red",
+            "powerup" : "multiball"
+
+        },
+        {
+            "x" : 220,
+            "y" : 0,
+            "id" : "brick_blue",
+            "powerup" : "multiball"
+
+        },
+        {
+            "x" : 240,
+            "y" : 0,
+            "id" : "brick_pink",
+            "powerup" : "multiball"
+        },
+        {
+            "x" : 260,
+            "y" : 0,
+            "id" : "brick_pink",
+            "powerup" : "multiball"
+        },
+        {
+            "x" : 280,
+            "y" : 0,
+            "id" : "brick_green",
+            "powerup" : "multiball"
+        },
+        {
+            "x" : 300,
+            "y" : 0,
+            "id" : "brick_red",
+            "powerup" : "multiball"
+        },
+        {
+            "x" : 320,
+            "y" : 0,
+            "id" : "brick_blue",
+            "powerup" : "multiball"
+        },
+        {
+            "x" : 340,
+            "y" : 0,
+            "id" : "brick_blue",
+            "powerup" : "multiball"
+        },
+        {
+            "x" : 360,
+            "y" : 0,
+            "id" : "brick_pink",
+            "powerup" : "multiball"
+        },
+        {
+            "x" : 380,
+            "y" : 0,
+            "id" : "brick_red",
+            "powerup" : "multiball"
+        },
+        {
+            "x" : 400,
+            "y" : 0,
+            "id" : "brick_red",
+            "powerup" : "multiball"
+        },
+        {
+            "x" : 420,
+            "y" : 0,
+            "id" : "brick_blue",
+            "powerup" : "multiball"
+        },
+        {
+            "x" : 440,
+            "y" : 0,
+            "id" : "brick_pink",
+            "powerup" : "multiball"
+        },
+        {
+            "x" : 460,
+            "y" : 0,
+            "id" : "brick_green",
+            "powerup" : "multiball"
+        },
+        {
+            "x" : 480,
+            "y" : 0,
+            "id" : "brick_red",
+            "powerup" : "multiball"
+        },
+        {
+            "x" : 500,
+            "y" : 0,
+            "id" : "brick_blue",
+            "powerup" : "multiball"
+        }
+    ]
+}
