@@ -1,0 +1,5 @@
+package gomoku;
+
+class Show {
+	
+}
