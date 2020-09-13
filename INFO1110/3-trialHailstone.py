@@ -7,7 +7,7 @@ while True:
 	
 	if n == 1:
 		break
-	if n % 2 == 1 and n != 1:
+	elif n % 2 == 1:
 		n = 3*n + 1
 		alist.append(n)
 	elif n%2 ==0 :
