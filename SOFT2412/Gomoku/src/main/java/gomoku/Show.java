@@ -1,5 +1,6 @@
 package gomoku;
 
-class Show {
+class Show 
+{
 	
 }
