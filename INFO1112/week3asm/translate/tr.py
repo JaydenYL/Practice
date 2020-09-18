@@ -2,6 +2,19 @@
 
 import sys
 
+# a function that deal with escape key
+escape_dict = [['\\n', '\\r', '\\t', '\\b'],
+				['\n', '\r', '\t', '\b']]
+				
+def escape_key(arr):
+	i = 0
+	while i < 4:
+		arr = arr.replace(escape_dict[0][i], escape_dict[1][i])
+		i += 1
+	return arr
+
+# defensive checking 
+
 if len(sys.argv) == 1:
 	print("No arguments")
 	sys.exit(3)
@@ -11,12 +24,17 @@ elif len(sys.argv) < 3:
 elif len(sys.argv) > 3:
 	print("Too many arguments")
 	sys.exit(1)
-elif (len(sys.argv[1]) != len(sys.argv[2])):
+
+#  validation				
+raw, new = escape_key(sys.argv[1]), escape_key(sys.argv[2])
+
+if (len(raw) != len(new)):
 	print("Invalid arguments")
 	sys.exit(0)
 
 
-raw, new = sys.argv[1], sys.argv[2]
+# main part
+
 output = []
 
 while True:
@@ -26,7 +44,7 @@ while True:
 		break
 	i = 0
 	while(i < len(raw)):
-		string = string.replace(raw[i], new[i])
+		string = escape_key(string).replace(raw[i], new[i])
 		i += 1
 	output.append(string)
 
