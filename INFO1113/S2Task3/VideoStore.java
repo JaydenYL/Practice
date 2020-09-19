@@ -3,6 +3,7 @@ import java.util.Map;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Arrays;
+import java.util.Set;
 
 public class VideoStore{
     private String name;
@@ -70,6 +71,10 @@ public class VideoStore{
             return null;
         }
         ArrayList<Film> list = new ArrayList<Film>();
+        // Arrays.stream(movies.keySet().toArray()).filter(ele -> (Arrays.stream(acts).filter(e ->ele.getActors().contains(e)))).forEach(ele -> list.add(ele));
+
+
+        // Set.stream(movies.keySet()).filter(ele -> (Arrays.stream(acts).filter(e ->ele.getActors().contains(e)))).foeEach(ele -> list.add(ele));
         for (Film ele : movies.keySet()){
             for(int i = 0; i < acts.length; i++){
                 if ( ! Arrays.asList(ele.getActors()).contains(acts[i])){
