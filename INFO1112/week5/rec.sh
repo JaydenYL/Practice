@@ -1,6 +1,7 @@
 #!/bin/bash
 
-while IFS=, read -r field1 field2
+aim=$1
+while IFS=, read  name number trash
 do
-	echo "$field and $field2"
-done < input.csv
+	if ["$name"=="$aim"]; then echo "Name: $name, Phone Number: $number"; if
+done 
