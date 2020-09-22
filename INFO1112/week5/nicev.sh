@@ -1,10 +1,11 @@
 #!/bin/bash
 
-csvfile=$1
-aim=$2
-while IFS=",", read  name number trash
+aim=$1
+new_nice=$2
+ps |
+while IFS=",", read  ppid tty tm cmd
 do
-	if [ "$name" == "$aim" ]; 
-		then echo "Name: $name, Phone Number: $number"; 
+	if [ "$cmd" == "${aim}*" ]; 
+		then echo "Found"
 	fi
 done 
