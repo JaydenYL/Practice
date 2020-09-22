@@ -1,5 +1,3 @@
 #!/bin/bash
 
-echo "hello yu" |
-read pd 
-if [$pd==]
+ps | head -n1 

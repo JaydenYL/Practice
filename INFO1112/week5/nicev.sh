@@ -1,11 +1,13 @@
 #!/bin/bash
 
 aim=$1
+declare -i new_nice
 new_nice=$2
-ps |
-while IFS=",", read  ppid tty tm cmd
+ps >> tmp
+while IFS=" ", read  ppid tty tm cmd
 do
 	if [ "$cmd" == "${aim}*" ]; 
-		then echo "Found"
+		then renice $new_nice -p $ppid
 	fi
-done 
+done < tmp
+rm tmp

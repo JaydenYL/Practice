@@ -1,0 +1,21 @@
+  PID TTY           TIME CMD
+39881 ttys000    0:00.13 -zsh
+40734 ttys000    0:00.02 bash
+40742 ttys000    0:00.16 zsh
+41050 ttys000    0:00.02 bash
+41500 ttys000    0:00.13 zsh
+41675 ttys000    0:00.01 sh nicev.sh bash
+  PID TTY           TIME CMD
+39881 ttys000    0:00.13 -zsh
+40734 ttys000    0:00.02 bash
+40742 ttys000    0:00.16 zsh
+41050 ttys000    0:00.02 bash
+41500 ttys000    0:00.14 zsh
+41696 ttys000    0:00.00 sh nicev.sh bash
+  PID TTY           TIME CMD
+39881 ttys000    0:00.13 -zsh
+40734 ttys000    0:00.02 bash
+40742 ttys000    0:00.16 zsh
+41050 ttys000    0:00.02 bash
+41500 ttys000    0:00.14 zsh
+41728 ttys000    0:00.00 sh nicev.sh bash
