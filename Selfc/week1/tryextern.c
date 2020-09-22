@@ -2,7 +2,7 @@
 //#include "thefun.h"
 //
 // void func();
-extern int var;
+//extern int var;
 int var;
 
 int main(int argc, char *argv[]) 
