@@ -9,6 +9,7 @@ int main(int argc, char *argv[]) {
 	printf("%u\n", day);
 	printf("%u\n", ++day);
 	printf("%u\n", ++day);
+	printf("%lu\n", sizeof(day));
 	return 0;
 }
 
