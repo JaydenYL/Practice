@@ -7,4 +7,4 @@ do
 	if [ "$name" == "$aim" ]; 
 		then echo "Name: $name, Phone Number: $number"; 
 	fi
-done < `ps`
+done 
