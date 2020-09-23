@@ -7,6 +7,7 @@ int main(int argc, char *argv[]) {
 		putchar(' ');
 		i++;
 	}
+	putchar(10);
 	
 	return 0;
 }
