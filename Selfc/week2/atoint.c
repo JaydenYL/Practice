@@ -14,7 +14,7 @@ int atoi(char * str)
 {
 	int idx = (str[0] == '-')? -1 : 1;
 	int len = strlen(str);
-	int end = (str[0] == '-')? 1 : 0;
+	int end = (str[0] == '-')?  1 : 0;
 	int res = 0;
 	for(int i = len-1; i >= end; i--)
 	{
@@ -23,4 +23,3 @@ int atoi(char * str)
 	}
 	return res;
 }
-
