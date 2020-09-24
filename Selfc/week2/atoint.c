@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 int atoi(char *);
+int strlen(char *);
 
 
 int main(int argc, char *argv[]) 
@@ -21,4 +22,11 @@ int atoi(char * str)
 			idx *= 10;
 	}
 	return res;
+}
+
+int strlen(char * str)
+{
+	int i = 0;
+	for(; str[i]; i++);
+	return i;
 }
