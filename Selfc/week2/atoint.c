@@ -2,6 +2,7 @@
 
 int atoi(char *);
 
+
 int main(int argc, char *argv[]) 
 {
 	printf("%d\n", atoi("-8675"));
@@ -10,16 +11,14 @@ int main(int argc, char *argv[])
 
 int atoi(char * str)
 {
-	int idx = 1;
+	int idx = (str[0] == '-')? -1 : 1;
+	int len = strlen(str);
+	int end = (str[0] == '-')? 1 : 0;
 	int res = 0;
-	for(int i = 0; str[i]; i++)
+	for(int i = len-1; i >= end; i--)
 	{
-		if (str[i] == '-'){
-			idx = -1;
-		}else{
 			res += idx*(str[i] - '0');
 			idx *= 10;
-		}
 	}
 	return res;
 }
