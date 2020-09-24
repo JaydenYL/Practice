@@ -8,6 +8,5 @@ int main(int argc, char *argv[]) {
 		i++;
 	}
 	putchar(10);
-	
 	return 0;
 }
