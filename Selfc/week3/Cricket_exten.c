@@ -39,6 +39,7 @@ int main(int argc, char *argv[])
 		{
 			printf("Duck\n");
 		}
+		// remember free the allocated memory after usage
 		free(batmans[i].firstname);
 		free(batmans[i].lastname);
 	}
