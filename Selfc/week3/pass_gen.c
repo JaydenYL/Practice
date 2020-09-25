@@ -10,14 +10,14 @@ int main(int argc, char *argv[])
 	srand((unsigned int) time(&t));
 	
 	char ch;
-	for(int i = 0; i < len; )
+	for(int i = 0; i < len; i++)
 	{
 		
-		if(!((ch = rand() >> 8) > 32 && ch < 127 ))
+		while((ch = rand() >> 8) > 32 && ch < 127 )
 		{
-			continue;
+			break;
 		}
-		i++;
+		
 		putchar(ch);
 		
 	}
