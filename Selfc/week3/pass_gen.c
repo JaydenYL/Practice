@@ -18,10 +18,9 @@ int main(int argc, char *argv[])
 			if (ch > 32 && ch < 127)
 				break;
 		}
-		
 		putchar(ch);
-		
 	}
+	
 	putchar(10);
 	
 	return 0;
