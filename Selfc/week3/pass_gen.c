@@ -8,6 +8,7 @@ int main(int argc, char *argv[])
 	char passw[len];
 	time_t t;
 	srand((unsigned int) time(&t));
+	
 	char ch;
 	for(int i = 0; i < len; i++)
 	{
@@ -15,12 +16,8 @@ int main(int argc, char *argv[])
 		if(!((ch = rand() >> 8) > 32 && ch < 127 )){
 			continue;
 		}
-		passw[i] = ch;
+		putchar(ch);
 		
-	}
-	for(int i = 0; i < len; i++)
-	{
-		putchar(passw[i]);
 	}
 	putchar(10);
 	
