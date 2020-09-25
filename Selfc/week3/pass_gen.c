@@ -10,12 +10,10 @@ int main(int argc, char *argv[])
 	srand((unsigned int) time(&t));
 	
 	char ch;
-	for(int i = 0; i < len; i++)
+	for(int i = 0; i < len; )
 	{
 		
-		if(!((ch = rand() >> 8) > 32 && ch < 127 )){
-			continue;
-		}
+		while(!((ch = rand() >> 8) > 32 && ch < 127 ));
 		putchar(ch);
 		
 	}
