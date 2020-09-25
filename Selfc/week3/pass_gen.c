@@ -13,9 +13,10 @@ int main(int argc, char *argv[])
 	for(int i = 0; i < len; i++)
 	{
 		
-		while((ch = rand()) > 32 && ch < 127 )
+		while(ch = rand() )
 		{
-			break;
+			if (ch > 32 && ch < 127)
+				break;
 		}
 		
 		putchar(ch);
