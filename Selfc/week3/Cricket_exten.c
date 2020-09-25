@@ -12,14 +12,15 @@ struct Batter{
 };
 
 
-// line 20 - 25 : assign the address of to char * to char **
+// line 20 - 26 : assign the input to char *
 
 int main(int argc, char *argv[]) 
 {
 	batter batmans[10];
 // -----
 	char * tmp[20];
-	for(int i = 0; i < 10; i++){
+	for(int i = 0; i < 10; i++)
+	{
 		batmans[i].firstname = getString(stdin);
 		batmans[i].lastname  = getString(stdin);
 // -----
@@ -27,8 +28,9 @@ int main(int argc, char *argv[])
 		while(getchar() == '\n') break;
 	}
 	
-//	printf("%c", *batmans[0].firstname[0]);
-	for(int i = 0; i < 10; i++){
+	
+	for(int i = 0; i < 10; i++)
+	{
 		printf("%d. %c. %s: ", i+1, batmans[i].firstname[0], batmans[i].lastname);
 		if(batmans[i].runs){
 			printf("%d\n", batmans[i].runs);
@@ -48,9 +50,11 @@ char * getString(FILE * fp)
 	size_t i = 0;
 	char * str = realloc(NULL, sizeof(char)*len);
 	char ch;
-	while((ch = fgetc(fp))!=EOF  && ch != ' '){
+	while((ch = fgetc(fp))!=EOF  && ch != ' ')
+	{
 		str[i++] = ch;
-		if(i == len){
+		if(i == len)
+		{
 			str = realloc(str, sizeof(char)*(len+=8));
 			if (!str) return  str;
 		}
