@@ -6,12 +6,16 @@
 
 int main(int argc, char *argv[]) 
 {
-	char buff[100];
+	int count = 0, errno = 0;
+	char buff[128] = {0};
 	FILE * f = fopen(argv[1], "r");
-	while(fread(buff, 100, sizeof(char), f) != 0)
+	while(!feof(f))
 	{
+		count = fread (buff, sizeof (char), 128, f);
 		fprintf(stdout, "%s", buff);
-		memset(buff, 0, 100);
+		int n = feof (f);
+		printf ("%d,%d\n", count, n);
+		printf ("%s\n",strerror (errno));
 	}
 	
 	return 0;
