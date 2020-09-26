@@ -9,9 +9,11 @@ int main(int argc, char *argv[])
 	return 0;
 }
 
+
 int mestrlen(const char * string)
 {
 	int i = 0;
 	for( ; string[i]; i++);
+
 	return i;
 }

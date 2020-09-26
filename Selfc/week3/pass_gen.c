@@ -5,7 +5,7 @@
 int main(int argc, char *argv[]) 
 {
 	size_t len = atoi(argv[1]);
-	char passw[len];
+	char * passw = malloc(len);
 	time_t t;
 	srand((unsigned int) time(&t));
 	
@@ -18,6 +18,7 @@ int main(int argc, char *argv[])
 			if (ch > 32 && ch < 127)
 				break;
 		}
+		passw[i] = ch;
 		putchar(ch);
 	}
 	
