@@ -6,17 +6,19 @@
 
 int main(int argc, char *argv[]) 
 {
-	int count = 0, errno = 0;
-	char buff[128] = {0};
+	int  count = 0;
+	char buff[128] ;
+	bzero(buff, 128);
 	FILE * f = fopen(argv[1], "r");
 	while(!feof(f))
 	{
-		count = fread (buff, sizeof (char), 128, f);
+		count = fread (buff, sizeof (char), 127, f);
+		buff[127] = 0;
 		fprintf(stdout, "%s", buff);
-		int n = feof (f);
-		printf ("%d,%d\n", count, n);
-		printf ("%s\n",strerror (errno));
+		bzero(buff, 128);
+		printf("\ncount = %d\n", count);
 	}
+	
 	
 	return 0;
 }
