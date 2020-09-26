@@ -7,7 +7,7 @@
 int main(int argc, char *argv[]) 
 {
 	char buff[100];
-	while(fread(buff, 100, sizeof(char), stdin) != 0)
+	while(fread(buff, 100, sizeof(char), stdin) != EOF)
 	{
 		fprintf(stdout, "%s", buff);
 		memset(buff, 0, 100);
