@@ -7,7 +7,8 @@
 int main(int argc, char *argv[]) 
 {
 	char buff[100];
-	while(fread(buff, 100, sizeof(char), stdin) != EOF)
+	FILE * f = fopen(argv[1], "r");
+	while(fread(buff, 100, sizeof(char), f) != 0)
 	{
 		fprintf(stdout, "%s", buff);
 		memset(buff, 0, 100);
