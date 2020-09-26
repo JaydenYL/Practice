@@ -7,7 +7,6 @@ int main(int argc, char *argv[])
 	{
 		putchar(ch);
 	}
-	putchar('\n');
 	
 	if(argc > 2 && argv[1][0] == '-')
 	{
