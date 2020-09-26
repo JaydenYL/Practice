@@ -16,10 +16,11 @@ int main(int argc, char *argv[])
 			f = fopen(argv[i], "r");
 			while((ch = fgetc(f)) != EOF )
 			{
-				fputc(ch, stdout);
+				fprintf(stdout, "%c", ch);
 			}
 		}
 	}
 	
 	return 0;
 }
+
