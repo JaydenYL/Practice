@@ -2,7 +2,8 @@
 
 # define MPH 0.621371
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) 
+{
 	double speed;
 	double hours;
 	
