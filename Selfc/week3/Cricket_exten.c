@@ -65,5 +65,5 @@ char * getString(FILE * fp)
 
 	str[i++] = 0;
 	return (char *)realloc(str, sizeof(char)*i);
-	
+
 }
