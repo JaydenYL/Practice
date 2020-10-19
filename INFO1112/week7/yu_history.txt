@@ -1,0 +1,100 @@
+    1  shh -t git@git.stem.org
+    2  ssh -t git@git.stem.org
+    3  ssh -t git@git.edstem.org
+    4  ssh git.edstem.org
+    5  python3 tr.py xy XY
+    6  git commit -a -m "4nd commit"
+    7  git push origin master
+    8  git commit -a -m "5nd commit"
+    9  git push origin master
+   10  git commit -a -m "6nd commit"
+   11  git push origin master
+   12  cd ..
+   13  ls
+   14  git clone git.edstem.org:challenge/19262/project-template temp
+   15  cd temp
+   16  ls
+   17  touch main.py
+   18  open main.py
+   19  touch text.py
+   20  rm text.py
+   21  touch test.py
+   22  open test.py
+   23  cd ..
+   24  ls
+   25  echo "adf\n\"liu\""
+   26  cowthink hello
+   27  VIM script.sh
+   28  ls
+   29  sh  script.sh
+   30  VIM script.sh
+   31  sh  script.sh
+   32  VIM script.sh
+   33  sh  script.sh
+   34  cat > hello.py
+   35  cat | testname=
+   36  echo $testname
+   37  cd translate
+   38  git commit -a -m "7th commit"
+   39  git push
+   40  git status
+   41  git commit -a -m "8th commit"
+   42  git push
+   43  cd ..
+   44  cat > mkdir
+   45  cat | mkdir
+   46  mkdir -help
+   47  man mkdir
+   48  cd temp
+   49  ls
+   50  rm main.py
+   51  rm test.py
+   52  cd ~/.ssh
+   53  ls
+   54  cat known_hosts
+   55  desktop
+   56  git clone git.edstem.org:challenge/19261/get-most-used-disk disk
+   57  cd disk
+   58  ls
+   59  rf
+   60  df
+   61  df | sort -k 2n -r
+   62  df | sort -k 2n -r | cut -d " "
+   63  df | sort -k 2n -r | cut -d " " -f
+   64  df | sort -k 2n -r | cut -d " " -f 1
+   65  vim script.sh
+   66  git commit -a -m "1st commit"
+   67  git push
+   68  vim script.sh
+   69  sh script.sh
+   70  git commit -a -m "2st commit"
+   71  git push origin master
+   72  df | sort -k 2n -r
+   73  df | sort -k 2n 
+   74  df | tail -n +1 | sort -k 2n -r
+   75  df | tail -n +1
+   76  df | tail -n +2
+   77  df | tail -n +2 | sort -k -6n n 
+   78  df | tail -n +2 | sort -k 6n
+   79  df | tail -n +2 | sort -k 6n -r
+   80  df | tail -n +2 | sort -r -k 6n 
+   81  df | tail -n +2 | sort -kr 6n 
+   82  df | tail -n +2 | sort -rk 6n 
+   83  df
+   84  df | tail -n +2 | sort -r -k6 -n
+   85  df | tail -n +2 | sort -r -k6 -n | cut -d " " -f 1
+   86  git status
+   87  git cmt -a -m "3rd commit"
+   88  git push
+   89  vim script.sh
+   90  git cmt -a -m "4th commit"
+   91  git push origin master
+   92  git cmt -a -m "5th commit"
+   93  git push
+   94  cd ../temp
+   95  ls
+   96  touch script.py
+   97  open script.py
+   98  python3 script.py
+   99  cd temp
+  100  desktop
