@@ -1,3 +1,6 @@
 import os
 
-os.execv('/usr/local/bin/python3', ['print(1)'])
+if os.fork():
+	os.execv('/bin/echo', ['echo','hello '])
+
+print("hhh")
