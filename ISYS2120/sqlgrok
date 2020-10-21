@@ -1,0 +1,38 @@
+select film_id , title as film_title, count(category_id) as count, category.name
+from film join film_category using (film_id)
+					join category      using (category_id)
+group by film_id, title , category_id, category.name
+having count(category_id) = 
+
+
+(select max(count) from (select (count(category_id))
+                             from film join film_category using (film_id)
+                             group by film_id) listtt) 
+
+
+
+
+select distinct f1.film_id, f1.title
+from Film f1 cross join Film f2
+
+where f1.film_id <> f2.film_id
+and not exists 
+(
+select actor_id
+from Film_Actor fa
+where fa.film_id = f1.film_id
+	except
+select actor_id
+from Film_Actor fa
+where fa.film_id = f2.film_id
+)
+and not exists
+(
+select actor_id
+from Film_Actor fa
+where fa.film_id = f2.film_id
+	except
+select actor_id
+from Film_Actor fa
+where fa.film_id = f1.film_id
+)
