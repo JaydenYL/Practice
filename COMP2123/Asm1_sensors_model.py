@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 def sensors_model(A):
-	group_list  = []
+	list_of_group  = []
 	temp_group = []
 	temp_group.append(0)
 	
@@ -9,24 +9,25 @@ def sensors_model(A):
 		if A[i] - A[i-1] <= 2:
 			temp_group.append(i)
 		else:
-			group_list.append(temp_group)
+			list_of_group.append(temp_group)
 			temp_group = [i]
 	if temp_group:
-		group_list.append(temp_group)
+		list_of_group.append(temp_group)
 	
-	print(group_list)
-	ret_list = []
-	for each_group in group_list:
+#	print(list_of_group)
+	
+	combination = []
+	for each_group in list_of_group:
 		print("each_group: ", each_group)
 		i = 0
 		while i < len(each_group) - 1:
 			j = i + 1
 			while j < len(each_group):
-				ret_list.append([each_group[i], each_group[j]])
+				combination.append([each_group[i], each_group[j]])
 				j += 1
 			i += 1
 		
-	return ret_list
+	return combination
 
 
 
