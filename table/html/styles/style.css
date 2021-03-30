@@ -28,7 +28,7 @@ img {
   display: block;
   margin: 0 auto;
 }
-
+  
 p, li {
   font-size: 16px;
   /* line-height 后而可以跟不同的参数，如果是数字，就是当前字体大小乘上数字 */
