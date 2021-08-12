@@ -1,0 +1,1395 @@
+Attach("m2088crypto.m");
+
+"(Magma functions defined for use in MATH2088/2988)";
+
+NewLogFile:=procedure(newname)
+  SetLogFile(newname);
+  Write("newlyspecifiedlogfilename.txt",newname: Overwrite:=true);
+end procedure;
+
+SetHistorySize(10000);
+alphabet:=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+
+FreqDist:=function(ct)
+ return [<FrequencyDistribution(ct)[i],alphabet[i]>: i in [1..26]];
+end function;
+
+SortedFreqDist:=function(ct)
+ x,pi:=Sort(FrequencyDistribution(ct),func<x,y|y-x>);
+ return [FreqDist(ct)[i^pi]: i in [1..26]];
+end function;
+
+SortedFreqDist:=function(ct)
+ fd:=FreqDist(ct);
+ sfd:=[];
+ for i := 1 to 26 do
+  _,M:=Max([fd[j,1]: j in [1..27-i]]);
+  sfd[i]:=fd[M];
+  Remove(~fd,M);
+ end for;
+ return sfd;
+end function;
+
+AlphToInt:=function(x)
+ return Index(alphabet,x);
+end function;
+
+IntToAlph:=function(x)
+ xx:= x mod 26;
+ if xx eq 0 then xx:=26;
+ end if;
+ return alphabet[xx];
+end function;
+
+typical:=[CartesianProduct(RealField(8),Parent("A"))| <0.12583125999,"E">, <0.09216541997,"T">, <0.08250207996,"A">, <0.07751454997,"O">, <0.07148794997,"S">, <0.06972152998,"I">, <0.06764338996,"N">, <0.05787613999,"H">, <0.05569409998,"R">, <0.04426433998,"L">, <0.03574396998,"D">, <0.02753532999,"M">, <0.02722360999,"U">, <0.022859519993,"C">, <0.022547799994,"G">, <0.021924359991,"Y">, <0.021716539992,"F">, <0.021300909994,"W">, <0.019638399989,"P">, <0.014339149993,"B">, <0.010806319996,"V">, <0.005714879997,"K">, <0.0011429799997,"J">, <0.0011429799997,"X">, <0.0009351599996,"Q">, <0.0007273499995,"Z">];
+
+order:=[5, 20, 1, 15, 9, 14, 19, 8, 18, 4, 12, 21, 3, 13, 23, 6, 7, 25, 16, 2, 22, 11, 10, 24, 17, 26];
+
+freqkey:=function(ct)
+ sfd:=SortedFreqDist(ct);
+ nums:=[AlphToInt(sfd[i,2]): i in [1..26]];
+ return &cat[IntToAlph(order[Index(nums,i)]): i in [1..26]];
+end function;
+
+swap:=procedure(x,y,~key);
+ sk:=[AlphToInt(String(key)[i]): i in [1..26]];
+ G:=Sym(26);
+ pi:=G!(Index(sk,AlphToInt(x)),Index(sk,AlphToInt(y)));
+ key:=Parent(key)!&cat[IntToAlph(sk[i^pi]):i in [1..26]];
+end procedure;
+
+rotateKey:=procedure(x,y,~key,ct);
+ sk:=[String(key)[i]: i in [1..26]];
+ fd:=SortedFreqDist(ct);
+ inc:=1;
+ for i:=1 to 26 do
+  if fd[i,2] eq x then
+   inc:=-1;
+  elif fd[i,2] eq y then
+   l:=i;
+   break;
+  end if;
+ end for;
+ nsk:=sk;
+ nsk[Index(sk,y)]:=x;
+ repeat
+  l+:=inc;
+  t:=fd[l,2];
+  nsk[Index(sk,t)]:=y;
+  y:=t;
+ until y eq x;
+ key:=Parent(key)!&cat nsk;
+end procedure;
+
+CheckPeriod:=procedure(text,seq,a,b);
+ if Type(text) eq CryptTxt then
+  t:=String(text);
+ else
+  t:=text;
+ end if;
+ for i in seq do
+  "Checking for transposition cipher period",i;
+  for j:=1 to i-1 do
+   for k:=j+1 to i do
+    if CoincidenceIndex(Decimation(t,[j,k],i)) gt a then
+     if CoincidenceDiscriminant(Decimation(t,[j,k],i)) gt b then
+      i,"is possible";
+      break j;
+     end if;
+    end if;
+   end for;
+  end for;
+ end for;
+ "Done";
+end procedure;
+
+FindAdjacencies:=procedure(text,period,a,b);
+ if Type(text) eq CryptTxt then
+  t:=String(text);
+ else
+  t:=text;
+ end if;
+ for i:=1 to period do
+  for j:=1 to period do
+   if j ne i then
+    CoincidenceIndex:=CoincidenceIndex(Decimation(t,[i,j],period));
+     if CoincidenceIndex gt a then
+     CoincidenceDiscriminant:=CoincidenceDiscriminant(Decimation(t,[i,j],period));
+     if CoincidenceDiscriminant gt b then
+      i,j,CoincidenceIndex,CoincidenceDiscriminant;
+     end if;
+    end if;
+   end if;
+  end for;
+ end for;
+end procedure;
+
+MostCommonPolygraphs:=function(text,poly,freq)
+  if Type(text) eq CryptTxt then
+    return PolygraphFrequencyDistribution(String(text),poly,freq);
+  else
+    return PolygraphFrequencyDistribution(text,poly,freq);
+  end if;
+end function;
+
+CompareDigraphs:=function(seqA,seqB)
+  sA:=seqA;
+  sB:=seqB;
+  if Type(sA) eq CryptTxt then
+    sA:=String(sA);
+  end if;
+  if Type(sB) eq CryptTxt then
+    sB:=String(sB);
+  end if;
+  if Type(sA) eq MonStgElt then
+    sA:=[sA[i]*sA[i+1] : i in [1..#sA-1]];
+  end if;
+  if Type(sB) eq MonStgElt then
+    sB:=[sB[i]*sB[i+1] : i in [1..#sB-1]];
+  end if;
+  AA := {@ A*B : A, B in AZ @} where
+  AZ := [ CodeToString(64+i) : i in [1..26] ];
+  cntsA := [ 0 : i in [1..26^2] ];
+  cntsB := [ 0 : i in [1..26^2] ];
+  for s in sA do
+   cntsA[Index(AA,s)] +:= 1;
+  end for;
+  for s in sB do
+   cntsB[Index(AA,s)] +:= 1;
+  end for;
+  freqsA:=[RealField(20)!cntsA[i]/#sA : i in [1..26^2]];
+  freqsB:=[RealField(20)!cntsB[i]/#sB : i in [1..26^2]];
+  return &+[(freqsA[i]-freqsB[i])^2 : i in [1..26^2]];
+end function;
+
+NaiveEncoding:=function(text)
+ n:=Floor(#text/66);
+ seq:=[];
+ for k:=0 to n-1 do
+  n1:=StringToInteger(&cat [IntegerToString(StringToCode(text[i+66*k])+100): i in [1..66]]);
+  Append(~seq,n1);
+ end for;
+ if 66*n lt #text then
+   n1:=StringToInteger(&cat [IntegerToString(StringToCode(text[i])+100): i in [66*n+1..#text]]);
+   Append(~seq,n1);
+ end if;
+ return seq;
+end function;
+
+NaiveDecoding:=function(seq)
+ xx:=[];
+ for n:=1 to #seq do
+  f:=IntegerToString(seq[n]);
+  for j:=1 to Floor(#f/3) do
+    int:=StringToInteger(f[3*j-2..3*j])-100;
+    if int ge 1 and int le 255 then
+      Append(~xx,CodeToString(int));
+    else
+      "ERROR!",int,"is not a valid ascii code number.";
+      "
+      This means that you have not obtained the correct encoded form of the text.";
+      xx:=[""];
+      break n;
+    end if;
+  end for;
+ end for;
+ return &cat xx;
+end function;
+
+timelog:=procedure(n)
+ p:=RandomPrime(n);
+ Log(Factorization(p-1)[#Factorization(p-1),1])/2;
+ F:=FiniteField(p);
+ t:=Cputime();
+ log:=Log(Random(F));
+ Cputime(t);
+end procedure;
+
+Score:=function(text,list)
+  if Type(text) ne MonStgElt then
+    text:=String(text);
+  end if;
+  score:=0;
+  for i:=1 to #text-1 do
+    if text[i..i+1] in list then
+      score+:=2;
+    end if;
+  end for;
+  for i:=1 to #text-2 do
+    if text[i..i+2] in list then
+      score+:=4;
+    end if;
+  end for;
+  for i:=1 to #text-3 do
+    if text[i..i+3] in list then
+      score+:=8;
+    end if;
+  end for;
+  for i:=1 to #text-4 do
+    if text[i..i+4] in list then
+      score+:=16;
+    end if;
+  end for;
+  for i:=1 to #text-5 do
+    if text[i..i+5] in list then
+      score+:=32;
+    end if;
+  end for;
+  for i:=1 to #text-6 do
+    if text[i..i+6] in list then
+      score+:=64;
+    end if;
+  end for;
+  for i:=1 to #text-7 do
+    if text[i..i+7] in list then
+      score+:=128;
+    end if;
+  end for;
+  for i:=1 to #text-8 do
+    if text[i..i+8] in list then
+      score+:=256;
+    end if;
+  end for;
+  for i:=1 to #text-9 do
+    if text[i..i+9] in list then
+      score+:=512;
+    end if;
+  end for;
+  for i:=1 to #text-10 do
+    if text[i..i+10] in list then
+      score+:=1024;
+    end if;
+  end for;
+  return score;
+end function;
+
+Common:={@ "THE",
+"OF",
+"TO",
+"AND",
+"IN",
+"IS",
+"IT",
+"YOU",
+"THAT",
+"HE",
+"WAS",
+"FOR",
+"ON",
+"ARE",
+"WITH",
+"AS",
+"HIS",
+"THEY",
+"BE",
+"AT",
+"ONE",
+"HAVE",
+"THIS",
+"FROM",
+"OR",
+"HAD",
+"BY",
+"HOT",
+"WORD",
+"BUT",
+"WHAT",
+"SOME",
+"WE",
+"CAN",
+"OUT",
+"OTHER",
+"WERE",
+"ALL",
+"THERE",
+"WHEN",
+"UP",
+"USE",
+"YOUR",
+"HOW",
+"SAID",
+"AN",
+"EACH",
+"SHE",
+"WHICH",
+"DO",
+"THEIR",
+"TIME",
+"IF",
+"WILL",
+"WAY",
+"ABOUT",
+"MANY",
+"THEN",
+"THEM",
+"WRITE",
+"WOULD",
+"LIKE",
+"SO",
+"THESE",
+"HER",
+"LONG",
+"MAKE",
+"THING",
+"SEE",
+"HIM",
+"TWO",
+"HAS",
+"LOOK",
+"MORE",
+"DAY",
+"COULD",
+"GO",
+"COME",
+"DID",
+"NUMBER",
+"SOUND",
+"NO",
+"MOST",
+"PEOPLE",
+"MY",
+"OVER",
+"KNOW",
+"WATER",
+"THAN",
+"CALL",
+"FIRST",
+"WHO",
+"MAY",
+"DOWN",
+"SIDE",
+"BEEN",
+"NOW",
+"FIND",
+"ANY",
+"NEW",
+"WORK",
+"PART",
+"TAKE",
+"GET",
+"PLACE",
+"MADE",
+"LIVE",
+"WHERE",
+"AFTER",
+"BACK",
+"LITTLE",
+"ONLY",
+"ROUND",
+"MAN",
+"YEAR",
+"CAME",
+"SHOW",
+"EVERY",
+"GOOD",
+"ME",
+"GIVE",
+"OUR",
+"UNDER",
+"NAME",
+"VERY",
+"THROUGH",
+"JUST",
+"FORM",
+"SENTENCE",
+"GREAT",
+"THINK",
+"SAY",
+"HELP",
+"LOW",
+"LINE",
+"DIFFER",
+"TURN",
+"CAUSE",
+"MUCH",
+"MEAN",
+"BEFORE",
+"MOVE",
+"RIGHT",
+"BOY",
+"OLD",
+"TOO",
+"SAME",
+"TELL",
+"DOES",
+"SET",
+"THREE",
+"WANT",
+"AIR",
+"WELL",
+"ALSO",
+"PLAY",
+"SMALL",
+"END",
+"PUT",
+"HOME",
+"READ",
+"HAND",
+"PORT",
+"LARGE",
+"SPELL",
+"ADD",
+"EVEN",
+"LAND",
+"HERE",
+"MUST",
+"BIG",
+"HIGH",
+"SUCH",
+"FOLLOW",
+"ACT",
+"WHY",
+"ASK",
+"MEN",
+"CHANGE",
+"WENT",
+"LIGHT",
+"KIND",
+"OFF",
+"NEED",
+"HOUSE",
+"PICTURE",
+"TRY",
+"US",
+"AGAIN",
+"ANIMAL",
+"POINT",
+"MOTHER",
+"WORLD",
+"NEAR",
+"BUILD",
+"SELF",
+"EARTH",
+"FATHER",
+"HEAD",
+"STAND",
+"OWN",
+"PAGE",
+"SHOULD",
+"COUNTRY",
+"FOUND",
+"ANSWER",
+"SCHOOL",
+"GROW",
+"STUDY",
+"STILL",
+"LEARN",
+"PLANT",
+"COVER",
+"FOOD",
+"SUN",
+"FOUR",
+"BETWEEN",
+"STATE",
+"KEEP",
+"EYE",
+"NEVER",
+"LAST",
+"LET",
+"THOUGHT",
+"CITY",
+"TREE",
+"CROSS",
+"FARM",
+"HARD",
+"START",
+"MIGHT",
+"STORY",
+"SAW",
+"FAR",
+"SEA",
+"DRAW",
+"LEFT",
+"LATE",
+"RUN",
+"DONT",
+"WHILE",
+"PRESS",
+"CLOSE",
+"NIGHT",
+"REAL",
+"LIFE",
+"FEW",
+"NORTH",
+"OPEN",
+"SEEM",
+"TOGETHER",
+"NEXT",
+"WHITE",
+"CHILDREN",
+"BEGIN",
+"GOT",
+"WALK",
+"EXAMPLE",
+"EASE",
+"PAPER",
+"GROUP",
+"ALWAYS",
+"MUSIC",
+"THOSE",
+"BOTH",
+"MARK",
+"OFTEN",
+"LETTER",
+"UNTIL",
+"MILE",
+"RIVER",
+"CAR",
+"FEET",
+"CARE",
+"SECOND",
+"BOOK",
+"CARRY",
+"TOOK",
+"SCIENCE",
+"EAT",
+"ROOM",
+"FRIEND",
+"BEGAN",
+"IDEA",
+"FISH",
+"MOUNTAIN",
+"STOP",
+"ONCE",
+"BASE",
+"HEAR",
+"HORSE",
+"CUT",
+"SURE",
+"WATCH",
+"COLOR",
+"FACE",
+"WOOD",
+"MAIN",
+"ENOUGH",
+"PLAIN",
+"GIRL",
+"USUAL",
+"YOUNG",
+"READY",
+"ABOVE",
+"EVER",
+"RED",
+"LIST",
+"THOUGH",
+"FEEL",
+"TALK",
+"BIRD",
+"SOON",
+"BODY",
+"DOG",
+"FAMILY",
+"DIRECT",
+"POSE",
+"LEAVE",
+"SONG",
+"MEASURE",
+"DOOR",
+"PRODUCT",
+"BLACK",
+"SHORT",
+"NUMERAL",
+"CLASS",
+"WIND",
+"QUESTION",
+"HAPPEN",
+"COMPLETE",
+"SHIP",
+"AREA",
+"HALF",
+"ROCK",
+"ORDER",
+"FIRE",
+"SOUTH",
+"PROBLEM",
+"PIECE",
+"TOLD",
+"KNEW",
+"PASS",
+"SINCE",
+"TOP",
+"WHOLE",
+"KING",
+"SPACE",
+"HEARD",
+"BEST",
+"HOUR",
+"BETTER",
+"TRUE",
+"DURING",
+"HUNDRED",
+"FIVE",
+"REMEMBER",
+"STEP",
+"EARLY",
+"HOLD",
+"WEST",
+"GROUND",
+"INTEREST",
+"REACH",
+"FAST",
+"VERB",
+"SING",
+"LISTEN",
+"SIX",
+"TABLE",
+"TRAVEL",
+"LESS",
+"MORNING",
+"TEN",
+"SIMPLE",
+"SEVERAL",
+"VOWEL",
+"TOWARD",
+"WAR",
+"LAY",
+"AGAINST",
+"PATTERN",
+"SLOW",
+"CENTER",
+"LOVE",
+"PERSON",
+"MONEY",
+"SERVE",
+"APPEAR",
+"ROAD",
+"MAP",
+"RAIN",
+"RULE",
+"GOVERN",
+"PULL",
+"COLD",
+"NOTICE",
+"VOICE",
+"UNIT",
+"POWER",
+"TOWN",
+"FINE",
+"CERTAIN",
+"FLY",
+"FALL",
+"LEAD",
+"CRY",
+"DARK",
+"MACHINE",
+"NOTE",
+"WAIT",
+"PLAN",
+"FIGURE",
+"STAR",
+"BOX",
+"NOUN",
+"FIELD",
+"REST",
+"CORRECT",
+"ABLE",
+"POUND",
+"DONE",
+"BEAUTY",
+"DRIVE",
+"STOOD",
+"CONTAIN",
+"FRONT",
+"TEACH",
+"WEEK",
+"FINAL",
+"GAVE",
+"GREEN",
+"OH",
+"QUICK",
+"DEVELOP",
+"OCEAN",
+"WARM",
+"FREE",
+"MINUTE",
+"STRONG",
+"SPECIAL",
+"MIND",
+"BEHIND",
+"CLEAR",
+"TAIL",
+"PRODUCE",
+"FACT",
+"STREET",
+"INCH",
+"MULTIPLY",
+"NOTHING",
+"COURSE",
+"STAY",
+"WHEEL",
+"FULL",
+"FORCE",
+"BLUE",
+"OBJECT",
+"DECIDE",
+"SURFACE",
+"DEEP",
+"MOON",
+"ISLAND",
+"FOOT",
+"SYSTEM",
+"BUSY",
+"TEST",
+"RECORD",
+"BOAT",
+"COMMON",
+"GOLD",
+"POSSIBLE",
+"PLANE",
+"STEAD",
+"DRY",
+"WONDER",
+"LAUGH",
+"THOUSAND",
+"AGO",
+"RAN",
+"CHECK",
+"GAME",
+"SHAPE",
+"EQUATE",
+"HOT",
+"MISS",
+"BROUGHT",
+"HEAT",
+"SNOW",
+"TIRE",
+"BRING",
+"YES",
+"DISTANT",
+"FILL",
+"EAST",
+"PAINT",
+"LANGUAGE",
+"AMONG",
+"GRAND",
+"BALL",
+"YET",
+"WAVE",
+"DROP",
+"HEART",
+"AM",
+"PRESENT",
+"HEAVY",
+"DANCE",
+"ENGINE",
+"POSITION",
+"ARM",
+"WIDE",
+"SAIL",
+"MATERIAL",
+"SIZE",
+"VARY",
+"SETTLE",
+"SPEAK",
+"WEIGHT",
+"GENERAL",
+"ICE",
+"MATTER",
+"CIRCLE",
+"PAIR",
+"INCLUDE",
+"DIVIDE",
+"SYLLABLE",
+"FELT",
+"PERHAPS",
+"PICK",
+"SUDDEN",
+"COUNT",
+"SQUARE",
+"REASON",
+"LENGTH",
+"REPRESENT",
+"ART",
+"SUBJECT",
+"REGION",
+"ENERGY",
+"HUNT",
+"PROBABLE",
+"BED",
+"BROTHER",
+"EGG",
+"RIDE",
+"CELL",
+"BELIEVE",
+"FRACTION",
+"FOREST",
+"SIT",
+"RACE",
+"WINDOW",
+"STORE",
+"SUMMER",
+"TRAIN",
+"SLEEP",
+"PROVE",
+"LONE",
+"LEG",
+"EXERCISE",
+"WALL",
+"CATCH",
+"MOUNT",
+"WISH",
+"SKY",
+"BOARD",
+"JOY",
+"WINTER",
+"SAT",
+"WRITTEN",
+"WILD",
+"INSTRUMENT",
+"KEPT",
+"GLASS",
+"GRASS",
+"COW",
+"JOB",
+"EDGE",
+"SIGN",
+"VISIT",
+"PAST",
+"SOFT",
+"FUN",
+"BRIGHT",
+"GAS",
+"WEATHER",
+"MONTH",
+"MILLION",
+"BEAR",
+"FINISH",
+"HAPPY",
+"HOPE",
+"FLOWER",
+"CLOTHE",
+"STRANGE",
+"GONE",
+"JUMP",
+"BABY",
+"EIGHT",
+"VILLAGE",
+"MEET",
+"ROOT",
+"BUY",
+"RAISE",
+"SOLVE",
+"METAL",
+"WHETHER",
+"PUSH",
+"SEVEN",
+"PARAGRAPH",
+"THIRD",
+"SHALL",
+"HELD",
+"HAIR",
+"DESCRIBE",
+"COOK",
+"FLOOR",
+"EITHER",
+"RESULT",
+"BURN",
+"HILL",
+"SAFE",
+"CAT",
+"CENTURY",
+"CONSIDER",
+"TYPE",
+"LAW",
+"BIT",
+"COAST",
+"COPY",
+"PHRASE",
+"SILENT",
+"TALL",
+"SAND",
+"SOIL",
+"ROLL",
+"TEMPERATURE",
+"FINGER",
+"INDUSTRY",
+"VALUE",
+"FIGHT",
+"LIE",
+"BEAT",
+"EXCITE",
+"NATURAL",
+"VIEW",
+"SENSE",
+"EAR",
+"ELSE",
+"QUITE",
+"BROKE",
+"CASE",
+"MIDDLE",
+"KILL",
+"SON",
+"LAKE",
+"MOMENT",
+"SCALE",
+"LOUD",
+"SPRING",
+"OBSERVE",
+"CHILD",
+"STRAIGHT",
+"CONSONANT",
+"NATION",
+"DICTIONARY",
+"MILK",
+"SPEED",
+"METHOD",
+"ORGAN",
+"PAY",
+"AGE",
+"SECTION",
+"DRESS",
+"CLOUD",
+"SURPRISE",
+"QUIET",
+"STONE",
+"TINY",
+"CLIMB",
+"COOL",
+"DESIGN",
+"POOR",
+"LOT",
+"EXPERIMENT",
+"BOTTOM",
+"KEY",
+"IRON",
+"SINGLE",
+"STICK",
+"FLAT",
+"TWENTY",
+"SKIN",
+"SMILE",
+"CREASE",
+"HOLE",
+"TRADE",
+"MELODY",
+"TRIP",
+"OFFICE",
+"RECEIVE",
+"ROW",
+"MOUTH",
+"EXACT",
+"SYMBOL",
+"DIE",
+"LEAST",
+"TROUBLE",
+"SHOUT",
+"EXCEPT",
+"WROTE",
+"SEED",
+"TONE",
+"JOIN",
+"SUGGEST",
+"CLEAN",
+"BREAK",
+"LADY",
+"YARD",
+"RISE",
+"BAD",
+"BLOW",
+"OIL",
+"BLOOD",
+"TOUCH",
+"GREW",
+"CENT",
+"MIX",
+"TEAM",
+"WIRE",
+"COST",
+"LOST",
+"BROWN",
+"WEAR",
+"GARDEN",
+"EQUAL",
+"SENT",
+"CHOOSE",
+"FELL",
+"FIT",
+"FLOW",
+"FAIR",
+"BANK",
+"COLLECT",
+"SAVE",
+"CONTROL",
+"DECIMAL",
+"GENTLE",
+"WOMAN",
+"CAPTAIN",
+"PRACTICE",
+"SEPARATE",
+"DIFFICULT",
+"DOCTOR",
+"PLEASE",
+"PROTECT",
+"NOON",
+"WHOSE",
+"LOCATE",
+"RING",
+"CHARACTER",
+"INSECT",
+"CAUGHT",
+"PERIOD",
+"INDICATE",
+"RADIO",
+"SPOKE",
+"ATOM",
+"HUMAN",
+"HISTORY",
+"EFFECT",
+"ELECTRIC",
+"EXPECT",
+"CROP",
+"MODERN",
+"ELEMENT",
+"HIT",
+"STUDENT",
+"CORNER",
+"PARTY",
+"SUPPLY",
+"BONE",
+"RAIL",
+"IMAGINE",
+"PROVIDE",
+"AGREE",
+"THUS",
+"CAPITAL",
+"WONT",
+"CHAIR",
+"DANGER",
+"FRUIT",
+"RICH",
+"THICK",
+"SOLDIER",
+"PROCESS",
+"OPERATE",
+"GUESS",
+"NECESSARY",
+"SHARP",
+"WING",
+"CREATE",
+"NEIGHBOR",
+"WASH",
+"BAT",
+"RATHER",
+"CROWD",
+"CORN",
+"COMPARE",
+"POEM",
+"STRING",
+"BELL",
+"DEPEND",
+"MEAT",
+"RUB",
+"TUBE",
+"FAMOUS",
+"DOLLAR",
+"STREAM",
+"FEAR",
+"SIGHT",
+"THIN",
+"TRIANGLE",
+"PLANET",
+"HURRY",
+"CHIEF",
+"COLONY",
+"CLOCK",
+"MINE",
+"TIE",
+"ENTER",
+"MAJOR",
+"FRESH",
+"SEARCH",
+"SEND",
+"YELLOW",
+"GUN",
+"ALLOW",
+"PRINT",
+"DEAD",
+"SPOT",
+"DESERT",
+"SUIT",
+"CURRENT",
+"LIFT",
+"ROSE",
+"CONTINUE",
+"BLOCK",
+"CHART",
+"HAT",
+"SELL",
+"SUCCESS",
+"COMPANY",
+"SUBTRACT",
+"EVENT",
+"PARTICULAR",
+"DEAL",
+"SWIM",
+"TERM",
+"OPPOSITE",
+"WIFE",
+"SHOE",
+"SHOULDER",
+"SPREAD",
+"ARRANGE",
+"CAMP",
+"INVENT",
+"COTTON",
+"BORN",
+"DETERMINE",
+"QUART",
+"NINE",
+"TRUCK",
+"NOISE",
+"LEVEL",
+"CHANCE",
+"GATHER",
+"SHOP",
+"STRETCH",
+"THROW",
+"SHINE",
+"PROPERTY",
+"COLUMN",
+"MOLECULE",
+"SELECT",
+"WRONG",
+"GRAY",
+"REPEAT",
+"REQUIRE",
+"BROAD",
+"PREPARE",
+"SALT",
+"NOSE",
+"PLURAL",
+"ANGER",
+"CLAIM",
+"CONTINENT",
+"OXYGEN",
+"SUGAR",
+"DEATH",
+"PRETTY",
+"SKILL",
+"WOMEN",
+"SEASON",
+"SOLUTION",
+"MAGNET",
+"SILVER",
+"THANK",
+"BRANCH",
+"MATCH",
+"SUFFIX",
+"ESPECIALLY",
+"FIG",
+"AFRAID",
+"HUGE",
+"SISTER",
+"STEEL",
+"DISCUSS",
+"FORWARD",
+"SIMILAR",
+"GUIDE",
+"EXPERIENCE",
+"SCORE",
+"APPLE",
+"BOUGHT",
+"LED",
+"PITCH",
+"COAT",
+"MASS",
+"CARD",
+"BAND",
+"ROPE",
+"SLIP",
+"WIN",
+"DREAM",
+"EVENING",
+"CONDITION",
+"FEED",
+"TOOL",
+"TOTAL",
+"BASIC",
+"SMELL",
+"VALLEY",
+"NOR",
+"DOUBLE",
+"SEAT",
+"ARRIVE",
+"MASTER",
+"TRACK",
+"PARENT",
+"SHORE",
+"DIVISION",
+"SHEET",
+"SUBSTANCE",
+"FAVOR",
+"CONNECT",
+"POST",
+"SPEND",
+"CHORD",
+"FAT",
+"GLAD",
+"ORIGINAL",
+"SHARE",
+"STATION",
+"DAD",
+"BREAD",
+"CHARGE",
+"PROPER",
+"BAR",
+"OFFER",
+"SEGMENT",
+"SLAVE",
+"DUCK",
+"INSTANT",
+"MARKET",
+"DEGREE",
+"POPULATE",
+"CHICK",
+"DEAR",
+"ENEMY",
+"REPLY",
+"DRINK",
+"OCCUR",
+"SUPPORT",
+"SPEECH",
+"NATURE",
+"RANGE",
+"STEAM",
+"MOTION",
+"PATH",
+"LIQUID",
+"LOG",
+"MEANT",
+"QUOTIENT",
+"TEETH",
+"SHELL",
+"NECK",
+"MIRROR",
+"ONWARD",
+"LEAGUE",
+"RODE",
+"CANNON",
+"VOLLEY",
+"BRIGADE",
+"NOBLE",
+"HONOUR",
+"PLY",
+"INTO",
+"BLUNDER",
+"PLUNGE",
+"ARMY",
+"ING",
+"TION",
+"OUGHT",
+"FOUGHT",
+"FLASH",
+"LASH",
+"ASH",
+"BARE",
+"SHOT",
+"SACK",
+"STROKE",
+"NOT",
+"GLORY",
+"FADE",
+"JAW",
+"HERO",
+"SOMEONE",
+"DISMAY",
+"REEL" @};
+
+BestSubstitutionKey:=function(text)
+  if Type(text) eq MonStgElt then
+    S:=SubstitutionCryptosystem();
+    text:=Encoding(S,text);
+  elif
+    Type(text) ne CryptTxt then
+    "Error: the argument should be of type MonStgElt or CryptTxT and should be ciphertext
+produced by a substitution cryptosystem";
+    return "";
+  elif
+    (text`Cryptosystem)`CipherType ne "Substitution" then
+    "Error: this function is only for use with substitution cryptosystems";
+    return "";
+  else
+    S:=text`Cryptosystem;
+  end if;
+  fkey:=S!freqkey(text);
+  newtext:=Enciphering(fkey,text);
+  oldscore:=Score(newtext,Common);
+  "For typical unenciphered text, you can expect the score divided by the \
+length to be at least 2.";
+  "In this case, using a key based solely on letter frequencies, the score divided by length was",RealField()!(oldscore/#String(text));
+  read showit,"Print this text? (y/n):";
+  if showit[1] eq "y" then
+    newtext;
+  end if;
+  read doagain,"Should I try to find a better key? (y/n)";
+  if doagain[1] eq "n" then
+    return fkey;
+  end if;
+  bestkey:=fkey;
+  bestsofar:=oldscore;
+  G:=Sym(26);
+  startingmessage:="Starting with a key based on standard letter frequencies.";
+  userandomkey:=0;
+  repeat
+    pi:=Random(G);
+    if userandomkey eq 1 then
+      fkey:=RandomKey(S);
+      oldscore:=Score(Enciphering(fkey,text),Common);
+    end if;
+    key:=fkey;
+    startingmessage;
+    score:=oldscore;
+    "The score is",score;
+    "Trying to improve it ...";
+    newscore:=score;
+    p:=0;
+    repeat
+      p+:=1;
+      score:=newscore;
+      for i:=1 to 25 do
+        for j:=i+1 to 26 do
+          swap(alphabet[i^pi],alphabet[j^pi],~key);
+          newtext:=Enciphering(key,text);
+          swapscore:=Score(newtext,Common);
+          if swapscore gt newscore then
+            swapscore;
+            newscore:=swapscore;
+          else
+            swap(alphabet[i^pi],alphabet[j^pi],~key);
+          end if;
+        end for;
+      end for;
+      if newscore ne score then
+        "Pass number",p,"completed. Trying again ...";
+      end if;
+    until newscore eq score;
+    "That's the best I can do!";
+    if score gt bestsofar then
+      bestkey:=key;
+      bestsofar:=score;
+      "New best score is",bestsofar;
+      "Score divided by length is",RealField()!(score/#String(text));
+      read showit,"Print deciphered text? (y/n):";
+      if showit[1] eq "y" then
+        Enciphering(key,text);
+      end if;
+    elif bestkey eq fkey then
+      startingmessage:="Trying again with a randomly chosen first key"; 
+      "No luck! I'll start with a random key next time.";
+      userandomkey:=1;
+    else
+      "Final score obtained was",score;
+      "Best score is still",bestsofar;
+      "Final score divided by length was",RealField()!(score/#String(text));
+      read showit,"Print the corresponding text? (y/n):";
+      if showit[1] eq "y" then
+        Enciphering(key,text);
+        "The key that produced this was",key;
+      end if;
+    end if;
+    read doagain,"Try again? (y/n)";
+  until doagain[1] eq "n";
+  return bestkey;
+end function;
+
+
