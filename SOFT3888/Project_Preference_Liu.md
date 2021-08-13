@@ -40,7 +40,7 @@ Students will be able develop hands-on experience working on building this real-
 
 Android Mobile development, mobile application development principles, testing, application design and architecture
 
- 
+
 
 Flexibility to consider other different technologies from the following if a reliable and robust application can be built:
 
