@@ -17,6 +17,9 @@ int main(int argc, char *argv[]) {
 	return 0;
 }
 
+
+
+
 void sort(int origin_x, int origin_y, struct location* locs, unsigned len){
 
 	
