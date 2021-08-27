@@ -174,6 +174,7 @@ void free_node(node *nd){
 }
 
 
+
 void list_destroy(struct linkedlist* l) {
 	if (l != NULL) {
 		free_node(l->head);
