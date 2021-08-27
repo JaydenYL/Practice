@@ -34,6 +34,8 @@ int main(int argc, char *argv[]) {
 	
 	test_remove();
 	
+	test_get();
+	
 	return 0;
 }
 
@@ -55,6 +57,7 @@ void test_add() {
 	list_print(l);
 	list_destroy(l);
 	
+	printf("test_add PASSED\n\n");
 }
 
 
@@ -88,7 +91,26 @@ void test_remove() {
 	assert(l->size == 0);
 	list_remove(l, 0);
 
-//	list_destroy(l);
+	list_destroy(l);
+	
+	printf("test_remove PASSED\n\n");
+}
+
+
+void test_get() {
+	llist * l = (llist*) malloc(sizeof(llist));
+	l->head = NULL;
+	l->size = 0;
+	printf("%p\n", l->head);
+	for (int i = 0; i < 7; i ++) {
+		list_add(l, 100+i);
+	}
+	int i = 6;
+	for (; i>= 0; i--) {
+		assert(list_get(l, i) == 100+i);
+	}
+	list_destroy(l);
+	printf("test_get PASSED\n\n");
 }
 
 
