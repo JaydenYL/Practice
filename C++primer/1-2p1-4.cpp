@@ -7,5 +7,6 @@ int main(int argc, char *argv[]) {
 	cin >> n1 >> n2;
 	cout<< "The product of n1 and n2 is "<< n1*n2;
 	cout << "---" << endl;
+	
 	return 0;
 }
