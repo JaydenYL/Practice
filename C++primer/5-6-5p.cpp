@@ -8,7 +8,6 @@ int main(int argc, char *argv[]) {
 label1:
 	try {
 		cin >> a >> b;
-		
 		if (b == 0) {
 			throw runtime_error("Invalid denominator!\n");
 		}
