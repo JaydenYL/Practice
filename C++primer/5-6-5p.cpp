@@ -16,7 +16,7 @@ label1:
 		goto label1;
 	}
 	
-	
+	 
 	
 	cout << a/b << endl;
 }
