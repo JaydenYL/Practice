@@ -100,7 +100,7 @@ class Solution:
 	def dfs(self, pre_node: Node, cur_node: Node):
 		self.solution.append(cur_node)
 
-		if len(self.solution) -1 == num_path:
+		if len(self.solution) - 1 == num_path:
 			return True
 		
 #		print(", ".join(str(ele) for ele in cur_node.edges))
@@ -116,8 +116,9 @@ class Solution:
 					return True
 			else:
 				continue
-			
-#		print(self.solution.pop())	
+		
+		deleted = self.solution.pop()
+#		print(deleted)
 		if pre_node:
 			cur_node.get_path(pre_node).passed_by = False
 			passed_path = pre_node.get_path(cur_node)
@@ -160,7 +161,7 @@ sol = Solution(N)
 sol.map.process_data(ls_3)
 num_path //= 2
 
-#print(num_path)
+print(num_path)
 
 res = sol.dfs(None, sol.map.matrix[2][0])
 
