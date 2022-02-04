@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-global num_path
-num_path = 0
+#global num_path
+#num_path = 0
 
 class Path:
+	
+	num_path = 0
 	
 	def __init__(self, start, end):
 		self.passed_by = False
@@ -13,27 +15,47 @@ class Path:
 	def __str__(self):
 		return "{}-{} [{}]".format(self.start, self.end, "T" if self.passed_by else "F")
 
+	def __eq__(self, n):
+		return (self.start == n.start and self.end == n.end ) or (self.start == n.end and self.end == n.start)
+
 
 class Node:
+
 	
 	def __init__(self, x, y):
 		self.x = x
 		self.y = y
-		self.edges = []
+		self.edges = list()
 
 
 	def add_path(self, n):
-		global num_path
 		for edge in self.edges:
 			if edge.end == n:
-#				print("edges ({}, {}) has already been added".format(n.x, n.y))
-				return False  # The edges has been alreadly added
+				print("edges ({}, {}) has already been added".format(n.x, n.y))
+				return False
 		self.edges.append(Path(self, n))
-#		print("{} --- {}".format(self, n))
-		num_path += 1
+		print("{} --- {}".format(self, n))
+		Path.num_path += 1
 		
+		added = n.add_path(self)
+		print(added)
+		
+#		for edge in n.edges:
+#			if edge.end == self:
+#				return
+#		n.edges.append(Path(n, self))
+#		Path.num_path += 1
+		return True
+	
+
+	def add_path(self, n):
+		for edge in self.edges:
+			if edge.end == n:
+				return False
+		self.edges.append(Path(self, n))
 #		n.add_path(self)
-		return True  # Successfully added the new edge
+		return True
+	
 	
 	def get_path(self, n):
 		for edge in self.edges:
@@ -55,7 +77,6 @@ class Map:
 	
 	def __init__(self, N):
 		self.N = N
-		self.num_path = 0
 		self.matrix = []
 		for i in range(0, N):
 			self.matrix.append([])
@@ -90,17 +111,21 @@ class Solution:
 		
 		self.N = N
 		for i in range(0, N):
-			ls_adjacent.append([])
+			ls_adjacent.append(list())
 			
-		self.solution = []
+		self.solution = list()
 		self.map = Map(N)
+		self.num_path = 0
 		
 		
 
 	def dfs(self, pre_node: Node, cur_node: Node):
 		self.solution.append(cur_node)
 
-		if len(self.solution) - 1 == num_path:
+#		if len(self.solution) - 1 == Path.num_path:
+#			return True
+		
+		if len(self.solution) - 1 == self.num_path:
 			return True
 		
 #		print(", ".join(str(ele) for ele in cur_node.edges))
@@ -132,7 +157,6 @@ class Solution:
 	
 	
 
-N = 5
 
 #ls = [
 #	[[(1, 0), (1, 1), (0, 1)],  		[(0, 0), (1, 1), (2, 1), (0,2)], 				[(0,1), (1,2), (2,2), (2,1)]],
@@ -157,17 +181,37 @@ ls_3 = [
 
 
 
+############################
+data_set = ls_3
+N = len(data_set)
+
+numm = 0
+for _ in data_set:
+	for i in _:
+		numm += len(i)
+print("the number of elements:", numm)
+
+
 sol = Solution(N)
-sol.map.process_data(ls_3)
-num_path //= 2
+sol.map.process_data(data_set)
+Path.num_path //= 2
 
-print(num_path)
+print("process data done!")
 
+num_edges = 0
+for i in sol.map.matrix:
+	for j in i:
+		if j:
+			num_edges += len(j.edges)
+print("number of edges:", num_edges)
+
+
+sol.num_path = num_edges//2
 res = sol.dfs(None, sol.map.matrix[2][0])
 
 print(res)
 
 print(len(sol.solution))
 print("->".join(str(ele) for ele in sol.solution))
-print(num_path)
+print(Path.num_path)
 
